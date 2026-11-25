@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="my"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University of Yangon - Computer Science Enrollment Guide</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'amber-bg': '#FEF3C7',
+        'amber-border': '#F59E0B',
+        'amber-text': '#92400E',
+        'indigo-accent': '#4F46E5',
+        'indigo-soft': '#EEF2FF',
+        'blue-primary': '#2563EB',
+        'blue-soft': '#EFF6FF',
+        'blue-ink': '#1D4ED8',
+        'success': '#15803D',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'paper': '#FFFDF7',
+        'paper-border': '#94A3B8',
+        'light-primary': '#004AC6',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#2563EB',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#4B41E1',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#EEF2FF',
+        'light-on-secondary-container': '#312E81',
+        'light-tertiary': '#824500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#FEF3C7',
+        'light-on-tertiary-container': '#92400E',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FEE2E2',
+        'light-on-error-container': '#991B1B',
+        'light-background': '#F8FAFC',
+        'light-on-background': '#0F172A',
+        'light-surface': '#FFFFFF',
+        'light-surface-dim': '#F1F5F9',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F8FAFC',
+        'light-surface-container': '#F1F5F9',
+        'light-surface-container-high': '#E2E8F0',
+        'light-surface-container-highest': '#CBD5E1',
+        'light-on-surface': '#0F172A',
+        'light-surface-variant': '#E2E8F0',
+        'light-on-surface-variant': '#475569',
+        'light-outline': '#94A3B8',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#0F172A',
+        'light-inverse-on-surface': '#F8FAFC',
+        'light-inverse-primary': '#93C5FD',
+        'light-shadow': '#0F172A',
+        'light-scrim': '#0F172A',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#2563EB',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#C3C0FF',
+        'dark-on-secondary': '#1D00A5',
+        'dark-secondary-container': '#3626CE',
+        'dark-on-secondary-container': '#E0E7FF',
+        'dark-tertiary': '#FFB77D',
+        'dark-on-tertiary': '#4D2600',
+        'dark-tertiary-container': '#78350F',
+        'dark-on-tertiary-container': '#FEF3C7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#0F172A',
+        'dark-on-background': '#F8FAFC',
+        'dark-surface': '#0F172A',
+        'dark-surface-dim': '#020617',
+        'dark-surface-bright': '#1E293B',
+        'dark-surface-container-lowest': '#020617',
+        'dark-surface-container-low': '#0F172A',
+        'dark-surface-container': '#1E293B',
+        'dark-surface-container-high': '#334155',
+        'dark-surface-container-highest': '#475569',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#334155',
+        'dark-on-surface-variant': '#CBD5E1',
+        'dark-outline': '#64748B',
+        'dark-outline-variant': '#334155',
+        'dark-inverse-surface': '#F8FAFC',
+        'dark-inverse-on-surface': '#0F172A',
+        'dark-inverse-primary': '#004AC6',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '24px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'body': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['22px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '28px', letterSpacing: '-0.1px', fontWeight: '700' }],
+        'title-lg': ['17px', { lineHeight: '28px', fontWeight: '700' }],
+        'title-md': ['15px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '20px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '18px', fontWeight: '600' }],
+        'mono-sm': ['12px', { lineHeight: '18px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Myanmar:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-surface antialiased">
+  <div class="min-h-[884px] max-w-md mx-auto bg-light-background flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top Amber Warning Banner -->
+    <div role="alert" data-component-id="alert-warning" data-component-type="alert" data-component-variant="warning" class="bg-amber-bg border-b border-amber-border/40 px-gutter-lg py-gutter-md flex items-start gap-gutter-sm text-amber-text">
+      <span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5" aria-hidden="true">warning</span>
+      <p class="font-body text-body-sm text-pretty" data-design-text-token="body-sm">
+        ၂၀၂၆ - ၂၀၂၇ ပညာသင်နှစ် ကျောင်းအပ်ဖောင်မူရင်းအပေါ် အခြေခံထားပါသည်။ စည်းကမ်းချက်များ နှစ်အလိုက် ပြောင်းလဲနိုင်ပါသည်။
+      </p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-page-margin py-gutter-xl flex flex-col gap-gutter-xl">
+
+      <!-- Academic Hero Header -->
+      <header class="flex flex-col gap-gutter-md">
+        <div class="inline-flex items-center gap-gutter-xs self-start px-gutter-md py-gutter-xs rounded-full bg-light-surface border border-light-outline-variant shadow-sm">
+          <span class="material-symbols-outlined text-[16px] text-blue-primary" aria-hidden="true">school</span>
+          <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">University of Yangon · CS Dept</span>
+        </div>
+
+        <div class="flex flex-col gap-gutter-sm">
+          <h1 class="font-headline text-display-lg-mobile text-light-on-surface text-balance" data-design-text-token="display-lg-mobile">
+            University of Yangon - Computer Science Enrollment Guide
+          </h1>
+          <p class="font-body text-body-lg text-light-on-surface-variant text-pretty py-1" data-design-text-token="body-lg">
+            ကွန်ပျူတာသိပ္ပံပညာဌာန ကျောင်းအပ်နှံခြင်း လမ်းညွှန်
+          </p>
+        </div>
+      </header>
+
+      <!-- Primary Action Cards (2 Large Interactive Cards) -->
+      <section aria-label="Enrollment modes" class="flex flex-col gap-gutter-lg">
+
+        <!-- Card 1: Prep & Form Pre-fill (Indigo Accent) -->
+        <a href="../prep-form-prefill/PrepFormPrefill.html" data-component-id="card-interactive" data-component-type="card" data-component-variant="interactive" class="group bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm hover:border-indigo-accent transition-colors duration-state-change ease-state-change flex flex-col gap-gutter-md">
+          <div class="flex items-start justify-between gap-gutter-md">
+            <div class="w-12 h-12 rounded-md bg-indigo-soft text-indigo-accent flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[26px]" aria-hidden="true">edit_document</span>
+            </div>
+            <span class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded-full bg-indigo-soft text-indigo-accent font-label text-label-md" data-design-text-token="label-md">
+              At Home Prep
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-gutter-xs">
+            <h2 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+              Prep &amp; Form Pre-fill
+            </h2>
+            <p class="font-body text-body-md text-light-on-surface-variant text-pretty py-1" data-design-text-token="body-md">
+              ကြိုတင်ပြင်ဆင်ရန် &amp; ဖောင်နမူနာ စမ်းဖြည့်မည်
+            </p>
+          </div>
+
+          <div class="pt-gutter-sm border-t border-light-outline-variant flex items-center justify-between gap-gutter-sm">
+            <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+              စာရွက်စာတမ်း စစ်ဆေးရန် + ဖောင်နမူနာကြည့်ရန်
+            </span>
+            <span class="material-symbols-outlined text-indigo-accent shrink-0" aria-hidden="true">arrow_forward</span>
+          </div>
+        </a>
+
+        <!-- Card 2: Start Campus Quest (Primary Blue Accent) -->
+        <a href="../campus-quest/CampusQuestDashboard.html" data-component-id="card-interactive-2" data-component-type="card" data-component-variant="interactive" class="group bg-blue-primary text-light-on-primary rounded-lg p-gutter-lg shadow-sm hover:bg-light-primary transition-colors duration-state-change ease-state-change flex flex-col gap-gutter-md">
+          <div class="flex items-start justify-between gap-gutter-md">
+            <div class="w-12 h-12 rounded-md bg-light-surface/20 text-light-on-primary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[26px]" aria-hidden="true">explore</span>
+            </div>
+            <span class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded-full bg-light-primary text-light-on-primary font-label text-label-md" data-design-text-token="label-md">
+              On Campus
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-gutter-xs">
+            <h2 class="font-headline text-headline-md text-light-on-primary" data-design-text-token="headline-md">
+              Start Campus Quest
+            </h2>
+            <p class="font-body text-body-md text-light-on-primary text-pretty py-1" data-design-text-token="body-md">
+              ကျောင်းရောက်နေပြီ - လမ်းညွှန်စတင်မည်
+            </p>
+          </div>
+
+          <div class="pt-gutter-sm border-t border-light-on-primary/20 flex items-center justify-between gap-gutter-sm">
+            <span class="font-body text-body-sm text-light-on-primary" data-design-text-token="body-sm">
+              သိပ္ပံဆောင် · ULB · UAB Pay အဆင့် ၄ ဆင့်
+            </span>
+            <span class="material-symbols-outlined text-light-on-primary shrink-0" aria-hidden="true">arrow_forward</span>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- Campus Key Rules Summary Card -->
+      <section aria-label="Key enrollment facts" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg flex flex-col gap-gutter-md">
+        <div class="flex items-center gap-gutter-sm">
+          <span class="material-symbols-outlined text-[20px] text-light-on-surface-variant" aria-hidden="true">verified</span>
+          <h3 class="font-label text-label-lg text-light-on-surface" data-design-text-token="label-lg">Quick Campus Reminders</h3>
+        </div>
+
+        <ul class="grid grid-cols-1 gap-gutter-md">
+          <li class="flex items-start gap-gutter-sm">
+            <span class="material-symbols-outlined text-[18px] text-blue-primary shrink-0 mt-0.5" aria-hidden="true">apartment</span>
+            <span class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+              အဆောက်အဦ ၂ ခုသာ သွားရန်လိုသည် — <strong class="text-light-on-surface">သိပ္ပံဆောင်</strong> နှင့် <strong class="text-light-on-surface">ULB (အပေါ်ဆုံးထပ်)</strong>
+            </span>
+          </li>
+          <li class="flex items-start gap-gutter-sm">
+            <span class="material-symbols-outlined text-[18px] text-indigo-accent shrink-0 mt-0.5" aria-hidden="true">photo_camera</span>
+            <span class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+              လိုင်စင်ဓာတ်ပုံ <strong class="text-light-on-surface">(၃) ပုံ</strong> — ၁ ပုံကပ်၊ ၂ ပုံညှပ်
+            </span>
+          </li>
+          <li class="flex items-start gap-gutter-sm">
+            <span class="material-symbols-outlined text-[18px] text-light-error shrink-0 mt-0.5" aria-hidden="true">account_balance_wallet</span>
+            <span class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+              ကျောင်းလခပေးသွင်းမှု — <strong class="text-light-error">UAB Pay Only</strong>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+
+</body></html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html><html lang="my"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Campus Quest Dashboard — UY CS Enrollment Guide</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'amber-bg': '#FEF3C7',
+        'amber-border': '#F59E0B',
+        'amber-text': '#92400E',
+        'indigo-accent': '#4F46E5',
+        'indigo-soft': '#EEF2FF',
+        'blue-primary': '#2563EB',
+        'blue-soft': '#EFF6FF',
+        'blue-ink': '#1D4ED8',
+        'success': '#15803D',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'paper': '#FFFDF7',
+        'paper-border': '#94A3B8',
+        'light-primary': '#004AC6',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#2563EB',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#4B41E1',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#EEF2FF',
+        'light-on-secondary-container': '#312E81',
+        'light-tertiary': '#824500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#FEF3C7',
+        'light-on-tertiary-container': '#92400E',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FEE2E2',
+        'light-on-error-container': '#991B1B',
+        'light-background': '#F8FAFC',
+        'light-on-background': '#0F172A',
+        'light-surface': '#FFFFFF',
+        'light-surface-dim': '#F1F5F9',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F8FAFC',
+        'light-surface-container': '#F1F5F9',
+        'light-surface-container-high': '#E2E8F0',
+        'light-surface-container-highest': '#CBD5E1',
+        'light-on-surface': '#0F172A',
+        'light-surface-variant': '#E2E8F0',
+        'light-on-surface-variant': '#475569',
+        'light-outline': '#94A3B8',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#0F172A',
+        'light-inverse-on-surface': '#F8FAFC',
+        'light-inverse-primary': '#93C5FD',
+        'light-shadow': '#0F172A',
+        'light-scrim': '#0F172A',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#2563EB',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#C3C0FF',
+        'dark-on-secondary': '#1D00A5',
+        'dark-secondary-container': '#3626CE',
+        'dark-on-secondary-container': '#E0E7FF',
+        'dark-tertiary': '#FFB77D',
+        'dark-on-tertiary': '#4D2600',
+        'dark-tertiary-container': '#78350F',
+        'dark-on-tertiary-container': '#FEF3C7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#0F172A',
+        'dark-on-background': '#F8FAFC',
+        'dark-surface': '#0F172A',
+        'dark-surface-dim': '#020617',
+        'dark-surface-bright': '#1E293B',
+        'dark-surface-container-lowest': '#020617',
+        'dark-surface-container-low': '#0F172A',
+        'dark-surface-container': '#1E293B',
+        'dark-surface-container-high': '#334155',
+        'dark-surface-container-highest': '#475569',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#334155',
+        'dark-on-surface-variant': '#CBD5E1',
+        'dark-outline': '#64748B',
+        'dark-outline-variant': '#334155',
+        'dark-inverse-surface': '#F8FAFC',
+        'dark-inverse-on-surface': '#0F172A',
+        'dark-inverse-primary': '#004AC6',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '24px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'body': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['22px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '28px', letterSpacing: '-0.1px', fontWeight: '700' }],
+        'title-lg': ['17px', { lineHeight: '28px', fontWeight: '700' }],
+        'title-md': ['15px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '20px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '18px', fontWeight: '600' }],
+        'mono-sm': ['12px', { lineHeight: '18px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Myanmar:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-surface antialiased">
+  <div class="min-h-[884px] max-w-md mx-auto bg-light-background flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top Sticky Dark Slate Collapsible Quest Header -->
+    <header class="sticky top-0 z-30 bg-light-inverse-surface text-light-inverse-on-surface shadow-sm">
+      <div class="px-page-margin py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <a href="../landing/LandingPage.html" aria-label="Back to home" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-light-surface/10 text-light-inverse-on-surface hover:bg-light-surface/20 shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+        </a>
+
+        <button type="button" id="quest-header-toggle" aria-expanded="false" aria-controls="quest-drawer" class="flex-1 flex items-center justify-between gap-gutter-sm text-left">
+          <div class="flex flex-col">
+            <span id="sticky-quest-label" class="font-label text-label-md text-light-inverse-primary uppercase tracking-wide" data-design-text-token="label-md">
+              CURRENT QUEST 1/4
+            </span>
+            <span id="sticky-quest-title" class="font-body text-body-sm text-light-inverse-on-surface" data-design-text-token="body-sm">
+              သိပ္ပံဆောင် (အပိုင်း ၁) — ဖောင်ထုတ်ယူခြင်း
+            </span>
+          </div>
+          <span id="quest-chevron" class="material-symbols-outlined text-[22px] text-light-inverse-on-surface shrink-0 transition-transform duration-state-change" aria-hidden="true">expand_more</span>
+        </button>
+      </div>
+
+      <!-- Collapsible Quest Overview Drawer (Hidden by Default) -->
+      <nav id="quest-drawer" aria-label="All quests overview" class="hidden border-t border-light-surface/15 px-page-margin py-gutter-md bg-light-inverse-surface flex flex-col gap-gutter-sm">
+        <a href="#quest-1" class="drawer-link flex items-center justify-between gap-gutter-sm py-1.5 text-light-inverse-on-surface">
+          <span class="font-body text-body-sm" data-design-text-token="body-sm">1. သိပ္ပံဆောင် (အပိုင်း ၁) - ဖောင်နှင့် ကြွေးကျန်</span>
+          <span class="font-mono text-mono-sm text-light-inverse-primary" data-design-text-token="mono-sm">Active</span>
+        </a>
+        <a href="#quest-2" class="drawer-link flex items-center justify-between gap-gutter-sm py-1.5 text-light-inverse-on-surface/80">
+          <span class="font-body text-body-sm" data-design-text-token="body-sm">2. ULB (အပေါ်ဆုံးထပ်) - ပါမောက္ခ လက်မှတ်</span>
+          <span class="font-mono text-mono-sm text-light-inverse-on-surface/60" data-design-text-token="mono-sm">Pending</span>
+        </a>
+        <a href="#quest-3" class="drawer-link flex items-center justify-between gap-gutter-sm py-1.5 text-light-inverse-on-surface/80">
+          <span class="font-body text-body-sm" data-design-text-token="body-sm">3. ကျောင်းလခ ပေးသွင်းခြင်း (UAB Pay Only)</span>
+          <span class="font-mono text-mono-sm text-light-inverse-on-surface/60" data-design-text-token="mono-sm">Pending</span>
+        </a>
+        <a href="#quest-4" class="drawer-link flex items-center justify-between gap-gutter-sm py-1.5 text-light-inverse-on-surface/80">
+          <span class="font-body text-body-sm" data-design-text-token="body-sm">4. သိပ္ပံဆောင် (အပိုင်း ၂) - ဖောင်ပြန်အပ်ခြင်း</span>
+          <span class="font-mono text-mono-sm text-light-inverse-on-surface/60" data-design-text-token="mono-sm">Pending</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col gap-gutter-lg">
+
+      <!-- Year Selector Pills -->
+      <section aria-label="Academic year selector" class="flex flex-col gap-gutter-sm">
+        <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Class Year</span>
+        <div class="flex items-center gap-gutter-xs overflow-x-auto pb-1">
+          <button type="button" class="year-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">First Year</span>
+          </button>
+          <button type="button" class="year-pill px-gutter-md py-gutter-xs rounded-full bg-blue-primary text-light-on-primary font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Second Year</span>
+          </button>
+          <button type="button" class="year-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Third Year</span>
+          </button>
+          <button type="button" class="year-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Fourth Year</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Entry Gate Toggle + Walking Direction Card -->
+      <section aria-label="Campus entry gate and walking directions" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between gap-gutter-sm">
+          <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Entry Gate</span>
+          <span class="font-mono text-mono-sm text-blue-ink" data-design-text-token="mono-sm">~4 min walk</span>
+        </div>
+
+        <div class="grid grid-cols-2 p-gutter-xs rounded-md bg-light-surface-container border border-light-outline-variant">
+          <button type="button" id="gate-main" class="py-gutter-sm px-gutter-sm rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md">
+            <span data-design-text-token="label-md">Main Gate</span>
+          </button>
+          <button type="button" id="gate-maler" class="py-gutter-sm px-gutter-sm rounded text-light-on-surface-variant font-label text-label-md">
+            <span data-design-text-token="label-md">Maler Gate</span>
+          </button>
+        </div>
+
+        <div class="rounded-md bg-blue-soft p-gutter-md flex items-start gap-gutter-sm">
+          <span class="material-symbols-outlined text-[20px] text-blue-primary shrink-0 mt-0.5" aria-hidden="true">directions_walk</span>
+          <div class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-blue-ink" data-design-text-token="label-md">သိပ္ပံဆောင်သို့ လမ်းညွှန်</span>
+            <p id="walking-direction-text" class="font-body text-body-sm text-light-on-surface text-pretty" data-design-text-token="body-sm">
+              အဓိပတိလမ်း (Main ဂိတ်) မှ တည့်တည့်ဝင်ပြီး ဘွဲ့နှင်းသဘင်ခန်းမရှေ့ ဘယ်ဘက်လမ်းအတိုင်း လျှောက်ပါက သိပ္ပံဆောင်သို့ ရောက်ရှိပါမည်။
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vertical Quest Cards -->
+      <section aria-label="Enrollment quests" class="flex flex-col gap-gutter-lg">
+
+        <!-- QUEST 1 -->
+        <article id="quest-1" data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface border-2 border-blue-primary rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <header class="flex items-start justify-between gap-gutter-sm">
+            <div class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-md text-blue-primary" data-design-text-token="label-md">QUEST 1 OF 4</span>
+              <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">
+                သိပ္ပံဆောင် (အပိုင်း ၁) - ဖောင်ထုတ်ယူခြင်း နှင့် ကြွေးကျန်စစ်ဆေးခြင်း
+              </h2>
+            </div>
+          </header>
+
+          <!-- Library Clearance Note -->
+          <div role="alert" data-component-id="alert-info" data-component-type="alert" data-component-variant="info" class="bg-blue-soft border border-light-outline-variant rounded-md p-gutter-md flex items-start gap-gutter-sm">
+            <span class="material-symbols-outlined text-[18px] text-blue-primary shrink-0 mt-0.5" aria-hidden="true">info</span>
+            <p class="font-body text-body-sm text-light-on-surface text-pretty" data-design-text-token="body-sm">
+              ဗဟိုစာကြည့်တိုက်သို့ သီးသန့်သွားရန် မလိုပါ၊ သိပ္ပံဆောင် ဘဏ္ဍာရေးဌာနမှ စာအုပ်ကြွေးကျန်မရှိကြောင်း တံဆိပ်တုံး ထုပေးပါသည်။
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-gutter-sm">
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="1">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၁။ ကျောင်းသားရေးရာ ကောင်တာတွင် &#39;သဟောင်းများ ပညာဆက်လက်သင်ခွင့် လျှောက်လွှာ&#39; ထုတ်ယူပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="1">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၂။ ဖောင်ထိပ်တွင် ဓာတ်ပုံ (၁) ပုံကပ်ပြီး ကျန် (၂) ပုံကို ညှပ်ထည့်ကာ အချက်အလက်များ ဖြည့်ပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="1">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၃။ စာတမ်းမှတ်ဌာနစိတ် / ကျောင်းသားရေးရာတွင် ဖောင်စစ်ဆေးပြီး အတည်ပြုလက်မှတ် ယူပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="1">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၄။ သိပ္ပံဆောင်ထဲရှိ ဘဏ္ဍာရေးဌာနတွင် ငွေစာရင်းနှင့် စာအုပ်ကြွေးကျန်မရှိကြောင်း တံဆိပ်တုံးများ ထုခိုင်းပါ။
+              </span>
+            </label>
+          </div>
+
+          <footer class="pt-gutter-sm border-t border-light-outline-variant flex items-center justify-between gap-gutter-sm">
+            <a href="../prep-form-prefill/PrepFormPrefill.html" class="font-label text-label-md text-indigo-accent hover:underline" data-design-text-token="label-md">
+              View Pre-filled Form
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Science+Building+University+of+Yangon" target="_blank" rel="noopener noreferrer" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-blue-soft text-blue-ink font-label text-label-md">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
+              <span data-design-text-token="label-md">Google Maps</span>
+            </a>
+          </footer>
+        </article>
+
+        <!-- QUEST 2 -->
+        <article id="quest-2" data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <header class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 2 OF 4</span>
+            <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">
+              ULB (အပေါ်ဆုံးထပ်) - ပါမောက္ခ (ဌာနမှူး) လက်မှတ်ယူခြင်း
+            </h2>
+          </header>
+
+          <div class="flex flex-col gap-gutter-sm">
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="2">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၁။ သိပ္ပံဆောင်မှ ထွက်ပြီး ULB အပေါ်ဆုံးထပ်ရှိ ကွန်ပျူတာသိပ္ပံပညာဌာန ရုံးခန်းသို့ သွားပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="2">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၂။ ဖောင်တင်ပြပြီး ပါမောက္ခ (ဌာနမှူး) လက်မှတ်နှင့် ဌာနတံဆိပ်တုံး ယူပါ။
+              </span>
+            </label>
+          </div>
+
+          <footer class="pt-gutter-sm border-t border-light-outline-variant flex items-center justify-end">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=University+Library+Building+University+of+Yangon" target="_blank" rel="noopener noreferrer" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-blue-soft text-blue-ink font-label text-label-md">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
+              <span data-design-text-token="label-md">Google Maps (ULB)</span>
+            </a>
+          </footer>
+        </article>
+
+        <!-- QUEST 3: UAB Pay Only -->
+        <article id="quest-3" data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <header class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 3 OF 4</span>
+            <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">
+              ကျောင်းလခ ပေးသွင်းခြင်း (UAB Pay Only)
+            </h2>
+          </header>
+
+          <!-- Prominent Red Alert Box for UAB Pay Only -->
+          <div role="alert" data-component-id="alert-error" data-component-type="alert" data-component-variant="error" class="bg-light-error-container border-2 border-light-error/50 rounded-md p-gutter-md flex items-start gap-gutter-sm text-light-on-error-container">
+            <span class="material-symbols-outlined text-[22px] text-light-error shrink-0 mt-0.5" aria-hidden="true">error</span>
+            <div class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-lg text-light-on-error-container" data-design-text-token="label-lg">
+                UAB Pay Only — အရေးကြီးသတိပေးချက်
+              </span>
+              <p class="font-body text-body-sm text-light-on-error-container text-pretty" data-design-text-token="body-sm">
+                ကျောင်းလခကို UAB Pay တစ်မျိုးတည်းဖြင့်သာ ပေးသွင်းရပါမည်။ ငွေလွှဲပြီးပါက ချာလံမိတ္တူ (Receipt Copy) ကို မဖြစ်မနေ ပြင်ဆင်ထားပါ။
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-gutter-sm">
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="3">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၁။ ပါမောက္ခ လက်မှတ်ရရှိပြီးနောက် UAB Pay ဖြင့် သတ်မှတ်ကျောင်းလခ ပေးသွင်းပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="3">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၂။ ငွေသွင်းချာလံ မိတ္တူ (Receipt Copy) ထုတ်ယူပါ။
+              </span>
+            </label>
+          </div>
+        </article>
+
+        <!-- QUEST 4 -->
+        <article id="quest-4" data-component-id="card-action" data-component-type="card" data-component-variant="action" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <header class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 4 OF 4</span>
+            <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">
+              သိပ္ပံဆောင် (အပိုင်း ၂) - ငွေလက်ခံဌာနသို့ ဖောင်ပြန်အပ်ခြင်း
+            </h2>
+          </header>
+
+          <div class="flex flex-col gap-gutter-sm">
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="4">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၁။ သိပ္ပံဆောင်ရှိ ဘဏ္ဍာရေးဌာန (ငွေလက်ခံသူ) ထံ လက်မှတ်စုံပါသော ဖောင်နှင့် ငွေသွင်းချာလံမိတ္တူကို အပ်နှံပါ။
+              </span>
+            </label>
+            <label class="flex items-start gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low cursor-pointer">
+              <input type="checkbox" class="quest-check mt-1 rounded border-light-outline text-blue-primary focus:ring-blue-primary" data-quest="4">
+              <span class="font-body text-body-md text-light-on-surface text-pretty" data-design-text-token="body-md">
+                ၂။ ကျောင်းအပ်နှံခြင်း အောင်မြင်စွာ ပြီးဆုံးပါပြီ။
+              </span>
+            </label>
+          </div>
+
+          <footer class="pt-gutter-sm border-t border-light-outline-variant flex items-center justify-end">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Science+Building+University+of+Yangon" target="_blank" rel="noopener noreferrer" data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" class="inline-flex items-center gap-gutter-xs px-gutter-md py-gutter-sm rounded bg-blue-soft text-blue-ink font-label text-label-md">
+              <span class="material-symbols-outlined text-[16px]" aria-hidden="true">location_on</span>
+              <span data-design-text-token="label-md">Google Maps</span>
+            </a>
+          </footer>
+        </article>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      // Sticky Collapsible Quest Header
+      const toggleBtn = document.getElementById('quest-header-toggle');
+      const drawer = document.getElementById('quest-drawer');
+      const chevron = document.getElementById('quest-chevron');
+      if (toggleBtn && drawer && chevron) {
+        toggleBtn.addEventListener('click', function () {
+          const isOpen = !drawer.classList.contains('hidden');
+          if (isOpen) {
+            drawer.classList.add('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            chevron.textContent = 'expand_more';
+          } else {
+            drawer.classList.remove('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            chevron.textContent = 'expand_less';
+          }
+        });
+      }
+
+      // Year Selector Pills
+      const yearPills = document.querySelectorAll('.year-pill');
+      yearPills.forEach(pill => {
+        pill.addEventListener('click', function () {
+          yearPills.forEach(p => {
+            p.className = 'year-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0';
+          });
+          pill.className = 'year-pill px-gutter-md py-gutter-xs rounded-full bg-blue-primary text-light-on-primary font-label text-label-md shrink-0';
+        });
+      });
+
+      // Entry Gate Toggle
+      const gateMain = document.getElementById('gate-main');
+      const gateMaler = document.getElementById('gate-maler');
+      const walkText = document.getElementById('walking-direction-text');
+
+      function setGate(gate) {
+        if (gate === 'main') {
+          gateMain.className = 'py-gutter-sm px-gutter-sm rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md';
+          gateMaler.className = 'py-gutter-sm px-gutter-sm rounded text-light-on-surface-variant font-label text-label-md';
+          walkText.textContent = 'အဓိပတိလမ်း (Main ဂိတ်) မှ တည့်တည့်ဝင်ပြီး ဘွဲ့နှင်းသဘင်ခန်းမရှေ့ ဘယ်ဘက်လမ်းအတိုင်း လျှောက်ပါက သိပ္ပံဆောင်သို့ ရောက်ရှိပါမည်။';
+        } else {
+          gateMaler.className = 'py-gutter-sm px-gutter-sm rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md';
+          gateMain.className = 'py-gutter-sm px-gutter-sm rounded text-light-on-surface-variant font-label text-label-md';
+          walkText.textContent = 'မာလာဂိတ်ပေါက်မှ ဝင်လာပြီး မာလာဆောင်ဘေးလမ်းအတိုင်း ညာဘက်သို့ ချိုးကွေ့လျှောက်ပါက သိပ္ပံဆောင်သို့ တိုက်ရိုက်ရောက်ရှိပါမည်။';
+        }
+      }
+      if (gateMain && gateMaler) {
+        gateMain.addEventListener('click', () => setGate('main'));
+        gateMaler.addEventListener('click', () => setGate('maler'));
+      }
+
+      // Update Sticky Quest Progress when sub-quests are checked
+      const questTitles = {
+        1: 'သိပ္ပံဆောင် (အပိုင်း ၁) — ဖောင်ထုတ်ယူခြင်း',
+        2: 'ULB (အပေါ်ဆုံးထပ်) — ပါမောက္ခ လက်မှတ်',
+        3: 'ကျောင်းလခ ပေးသွင်းခြင်း (UAB Pay Only)',
+        4: 'သိပ္ပံဆောင် (အပိုင်း ၂) — ဖောင်ပြန်အပ်ခြင်း'
+      };
+      const stickyLabel = document.getElementById('sticky-quest-label');
+      const stickyTitle = document.getElementById('sticky-quest-title');
+      const questChecks = document.querySelectorAll('.quest-check');
+
+      function updateQuestHeader() {
+        let activeQ = 1;
+        for (let q = 1; q <= 4; q++) {
+          const items = Array.from(document.querySelectorAll('.quest-check[data-quest="' + q + '"]'));
+          const allDone = items.length > 0 && items.every(i => i.checked);
+          if (allDone && q < 4) {
+            activeQ = q + 1;
+          } else if (!allDone) {
+            activeQ = q;
+            break;
+          } else {
+            activeQ = 4;
+          }
+        }
+        if (stickyLabel) stickyLabel.textContent = 'CURRENT QUEST ' + activeQ + '/4';
+        if (stickyTitle) stickyTitle.textContent = questTitles[activeQ];
+      }
+      questChecks.forEach(c => c.addEventListener('change', updateQuestHeader));
+    })();
+  </script>
+
+
+</body></html>

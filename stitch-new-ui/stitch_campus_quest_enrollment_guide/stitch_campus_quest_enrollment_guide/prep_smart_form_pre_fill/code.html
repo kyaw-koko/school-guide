@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="my"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prep &amp; Smart Form Pre-fill — UY CS Enrollment Guide</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'amber-bg': '#FEF3C7',
+        'amber-border': '#F59E0B',
+        'amber-text': '#92400E',
+        'indigo-accent': '#4F46E5',
+        'indigo-soft': '#EEF2FF',
+        'blue-primary': '#2563EB',
+        'blue-soft': '#EFF6FF',
+        'blue-ink': '#1D4ED8',
+        'success': '#15803D',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'paper': '#FFFDF7',
+        'paper-border': '#94A3B8',
+        'light-primary': '#004AC6',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#2563EB',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#4B41E1',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#EEF2FF',
+        'light-on-secondary-container': '#312E81',
+        'light-tertiary': '#824500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#FEF3C7',
+        'light-on-tertiary-container': '#92400E',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FEE2E2',
+        'light-on-error-container': '#991B1B',
+        'light-background': '#F8FAFC',
+        'light-on-background': '#0F172A',
+        'light-surface': '#FFFFFF',
+        'light-surface-dim': '#F1F5F9',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F8FAFC',
+        'light-surface-container': '#F1F5F9',
+        'light-surface-container-high': '#E2E8F0',
+        'light-surface-container-highest': '#CBD5E1',
+        'light-on-surface': '#0F172A',
+        'light-surface-variant': '#E2E8F0',
+        'light-on-surface-variant': '#475569',
+        'light-outline': '#94A3B8',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#0F172A',
+        'light-inverse-on-surface': '#F8FAFC',
+        'light-inverse-primary': '#93C5FD',
+        'light-shadow': '#0F172A',
+        'light-scrim': '#0F172A',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#2563EB',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#C3C0FF',
+        'dark-on-secondary': '#1D00A5',
+        'dark-secondary-container': '#3626CE',
+        'dark-on-secondary-container': '#E0E7FF',
+        'dark-tertiary': '#FFB77D',
+        'dark-on-tertiary': '#4D2600',
+        'dark-tertiary-container': '#78350F',
+        'dark-on-tertiary-container': '#FEF3C7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#0F172A',
+        'dark-on-background': '#F8FAFC',
+        'dark-surface': '#0F172A',
+        'dark-surface-dim': '#020617',
+        'dark-surface-bright': '#1E293B',
+        'dark-surface-container-lowest': '#020617',
+        'dark-surface-container-low': '#0F172A',
+        'dark-surface-container': '#1E293B',
+        'dark-surface-container-high': '#334155',
+        'dark-surface-container-highest': '#475569',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#334155',
+        'dark-on-surface-variant': '#CBD5E1',
+        'dark-outline': '#64748B',
+        'dark-outline-variant': '#334155',
+        'dark-inverse-surface': '#F8FAFC',
+        'dark-inverse-on-surface': '#0F172A',
+        'dark-inverse-primary': '#004AC6',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '24px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'body': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['22px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '28px', letterSpacing: '-0.1px', fontWeight: '700' }],
+        'title-lg': ['17px', { lineHeight: '28px', fontWeight: '700' }],
+        'title-md': ['15px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '20px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '18px', fontWeight: '600' }],
+        'mono-sm': ['12px', { lineHeight: '18px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Myanmar:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-surface antialiased">
+  <div class="min-h-[884px] max-w-md mx-auto bg-light-background flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-30 bg-light-surface border-b border-light-outline-variant px-page-margin py-gutter-md flex items-center justify-between gap-gutter-md">
+      <div class="flex items-center gap-gutter-sm">
+        <a href="../landing-bento/LandingBento.html" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Back to landing" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-light-surface-container text-light-on-surface hover:bg-light-surface-container-high transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_back</span>
+        </a>
+        <div>
+          <h1 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Prep &amp; Smart Form Pre-fill</h1>
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">ကြိုတင်ပြင်ဆင်မှုနှင့် ဖောင်နမူနာ</p>
+        </div>
+      </div>
+      <span id="prep-badge" class="px-gutter-sm py-gutter-xs rounded-full bg-indigo-soft text-indigo-accent font-mono text-mono-sm tabular-nums" data-design-text-token="mono-sm">1/3</span>
+    </header>
+
+    <main class="flex-1 px-page-margin pt-gutter-lg pb-24 flex flex-col gap-gutter-lg">
+
+      <!-- Compact Document Checklist Card -->
+      <section aria-label="Document checklist" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between gap-gutter-sm">
+          <div class="flex items-center gap-gutter-sm">
+            <span class="material-symbols-outlined text-[20px] text-indigo-accent" aria-hidden="true">checklist</span>
+            <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Document Checklist</h2>
+          </div>
+          <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">ယူဆောင်ရန်</span>
+        </div>
+
+        <div class="grid grid-cols-1 gap-gutter-sm">
+          <label class="flex items-center gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low border border-light-outline-variant cursor-pointer">
+            <input type="checkbox" checked class="smart-check rounded border-light-outline text-indigo-accent focus:ring-indigo-accent">
+            <span class="font-body text-body-sm text-light-on-surface" data-design-text-token="body-sm">3 License Photos (၁ ပုံကပ်၊ ၂ ပုံညှပ်)</span>
+          </label>
+          <label class="flex items-center gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low border border-light-outline-variant cursor-pointer">
+            <input type="checkbox" class="smart-check rounded border-light-outline text-indigo-accent focus:ring-indigo-accent">
+            <span class="font-body text-body-sm text-light-on-surface" data-design-text-token="body-sm">NRC Originals &amp; Copies (ကျောင်းသား/မိဘ)</span>
+          </label>
+          <label class="flex items-center gap-gutter-sm p-gutter-sm rounded bg-light-surface-container-low border border-light-outline-variant cursor-pointer">
+            <input type="checkbox" class="smart-check rounded border-light-outline text-indigo-accent focus:ring-indigo-accent">
+            <span class="font-body text-body-sm text-light-on-surface" data-design-text-token="body-sm">UAB Pay Account (ငွေအလုံအလောက် ဖြည့်ထားရန်)</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Segmented Pill Tabs (6 Tabs: Academic, Student, Father, Mother, Exams, Sponsor) -->
+      <section aria-label="Smart form tabs" class="flex flex-col gap-gutter-md">
+        <div role="tablist" aria-label="Form categories" class="flex items-center gap-gutter-xs overflow-x-auto pb-gutter-xs">
+          <button type="button" role="tab" id="stab-academic" aria-selected="true" aria-controls="spanel-academic" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-indigo-accent text-light-on-secondary font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Academic</span>
+          </button>
+          <button type="button" role="tab" id="stab-student" aria-selected="false" aria-controls="spanel-student" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Student</span>
+          </button>
+          <button type="button" role="tab" id="stab-father" aria-selected="false" aria-controls="spanel-father" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Father</span>
+          </button>
+          <button type="button" role="tab" id="stab-mother" aria-selected="false" aria-controls="spanel-mother" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Mother</span>
+          </button>
+          <button type="button" role="tab" id="stab-exams" aria-selected="false" aria-controls="spanel-exams" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Exams</span>
+          </button>
+          <button type="button" role="tab" id="stab-sponsor" aria-selected="false" aria-controls="spanel-sponsor" class="smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Sponsor</span>
+          </button>
+        </div>
+
+        <!-- Quick-Copy Helper Chips -->
+        <div class="flex flex-wrap items-center gap-gutter-xs">
+          <button type="button" id="chip-year" class="inline-flex items-center gap-1 px-gutter-sm py-gutter-xs rounded-full bg-blue-soft text-blue-ink font-label text-label-md border border-light-outline-variant">
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">auto_fix_high</span>
+            <span data-design-text-token="label-md">Fill 2026–2027</span>
+          </button>
+          <button type="button" id="chip-sponsor" class="inline-flex items-center gap-1 px-gutter-sm py-gutter-xs rounded-full bg-indigo-soft text-indigo-accent font-label text-label-md border border-light-outline-variant">
+            <span class="material-symbols-outlined text-[14px]" aria-hidden="true">content_copy</span>
+            <span data-design-text-token="label-md">Father as Sponsor</span>
+          </button>
+        </div>
+
+        <!-- Panel: Academic -->
+        <div role="tabpanel" id="spanel-academic" aria-labelledby="stab-academic" class="smart-panel bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Academic Year (ပညာသင်နှစ်)</span>
+            <input type="text" data-bind="acadYear" value="၂၀၂၆ - ၂၀၂၇" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <div class="grid grid-cols-2 gap-gutter-md">
+            <label class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Class Year</span>
+              <input type="text" data-bind="classYear" value="ဒုတိယနှစ်" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+            </label>
+            <label class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Roll No <span class="text-light-error">*</span></span>
+              <input type="text" data-bind="rollNo" value placeholder="ပကသ - ..." class="smart-input w-full rounded border-2 border-light-error/60 bg-light-error-container/15 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+            </label>
+          </div>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">University Reg No <span class="text-light-error">*</span></span>
+            <input type="text" data-bind="regNo" value placeholder="ရကတ - ..." class="smart-input w-full rounded border-2 border-light-error/60 bg-light-error-container/15 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+
+        <!-- Panel: Student -->
+        <div role="tabpanel" id="spanel-student" aria-labelledby="stab-student" class="smart-panel hidden bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Student Full Name</span>
+            <input type="text" data-bind="studentName" value="မောင်သုတအောင် (Mg Thuta Aung)" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">NRC Number <span class="text-light-error">*</span></span>
+            <input type="text" data-bind="studentNrc" value placeholder="၁၂/ကမရ(နိုင်)..." class="smart-input w-full rounded border-2 border-light-error/60 bg-light-error-container/15 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Permanent Address</span>
+            <input type="text" data-bind="studentAddress" value="အမှတ်(၁၄)၊ ပြည်လမ်း၊ ကမာရွတ်၊ ရန်ကုန်။" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+
+        <!-- Panel: Father -->
+        <div role="tabpanel" id="spanel-father" aria-labelledby="stab-father" class="smart-panel hidden bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Father Name</span>
+            <input type="text" id="input-father-name" data-bind="fatherName" value="ဦးကျော်ဇေယျ" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Father NRC <span class="text-light-error">*</span></span>
+            <input type="text" data-bind="fatherNrc" value placeholder="၁၂/ကမရ(နိုင်)..." class="smart-input w-full rounded border-2 border-light-error/60 bg-light-error-container/15 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+
+        <!-- Panel: Mother -->
+        <div role="tabpanel" id="spanel-mother" aria-labelledby="stab-mother" class="smart-panel hidden bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Mother Name</span>
+            <input type="text" data-bind="motherName" value="ဒေါ်ခင်မေသန်း" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Mother NRC <span class="text-light-error">*</span></span>
+            <input type="text" data-bind="motherNrc" value placeholder="၁၂/ကမရ(နိုင်)..." class="smart-input w-full rounded border-2 border-light-error/60 bg-light-error-container/15 px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+
+        <!-- Panel: Exams -->
+        <div role="tabpanel" id="spanel-exams" aria-labelledby="stab-exams" class="smart-panel hidden bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">First Year Major</span>
+            <input type="text" data-bind="examMajor" value="ကွန်ပျူတာသိပ္ပံ (ပထမနှစ်)" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Result Status</span>
+            <input type="text" data-bind="examResult" value="၂၀၂၅ / အောင်" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+
+        <!-- Panel: Sponsor -->
+        <div role="tabpanel" id="spanel-sponsor" aria-labelledby="stab-sponsor" class="smart-panel hidden bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm grid grid-cols-1 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Sponsor Name</span>
+            <input type="text" id="input-sponsor-name" data-bind="sponsorName" value="ဦးကျော်ဇေယျ" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">Stipend / Grant (ပြု / မပြု)</span>
+            <input type="text" data-bind="sponsorGrant" value="ပြု" class="smart-input w-full rounded border border-light-outline-variant bg-light-surface px-gutter-md py-gutter-sm font-body text-body-md text-light-on-surface">
+          </label>
+        </div>
+      </section>
+
+      <!-- Two-Sided Digital Form Replica Preview (Toggled via Sticky Drawer Button) -->
+      <section id="official-form-drawer" aria-label="Official paper form preview" class="bg-paper border border-paper-border rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+        <div class="flex items-center justify-between gap-gutter-sm">
+          <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">Official Form Replica</h2>
+          <div role="tablist" aria-label="Form side" class="inline-flex p-0.5 rounded bg-light-surface-container border border-light-outline-variant">
+            <button type="button" id="rep-front-btn" class="px-gutter-sm py-1 rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md">
+              <span data-design-text-token="label-md">Front</span>
+            </button>
+            <button type="button" id="rep-back-btn" class="px-gutter-sm py-1 rounded text-light-on-surface-variant font-label text-label-md">
+              <span data-design-text-token="label-md">Back</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="rep-front" class="flex flex-col gap-gutter-sm border-t border-paper-border pt-gutter-sm">
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+            ပညာသင်နှစ်: <strong data-preview="acadYear" class="text-blue-ink">၂၀၂၆ - ၂၀၂၇</strong> · ခုံအမှတ်: <strong data-preview="rollNo" class="text-light-error">[ဖြည့်ရန်]</strong>
+          </p>
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+            ကျောင်းသား: <strong data-preview="studentName" class="text-blue-ink">မောင်သုတအောင် (Mg Thuta Aung)</strong>
+          </p>
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+            အဘ/အမိ: <strong data-preview="fatherName" class="text-blue-ink">ဦးကျော်ဇေယျ</strong> / <strong data-preview="motherName" class="text-blue-ink">ဒေါ်ခင်မေသန်း</strong>
+          </p>
+        </div>
+
+        <div id="rep-back" class="hidden flex flex-col gap-gutter-sm border-t border-paper-border pt-gutter-sm">
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+            ထောက်ပံ့သူ: <strong data-preview="sponsorName" class="text-blue-ink">ဦးကျော်ဇေယျ</strong> · ထောက်ပံ့ကြေး: <strong data-preview="sponsorGrant" class="text-blue-ink">ပြု</strong>
+          </p>
+          <p class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+            နေရပ်လိပ်စာ: <strong data-preview="studentAddress" class="text-blue-ink">အမှတ်(၁၄)၊ ပြည်လမ်း၊ ကမာရွတ်၊ ရန်ကုန်။</strong>
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Action Bar -->
+    <div class="bg-light-surface border-t border-light-outline-variant px-page-margin py-gutter-md">
+      <a href="#official-form-drawer" id="btn-preview-official" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="w-full inline-flex items-center justify-center gap-gutter-sm px-gutter-lg py-gutter-md rounded-lg bg-indigo-accent text-light-on-secondary font-label text-label-lg shadow-sm hover:bg-light-secondary transition-colors duration-state-change">
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">description</span>
+        <span data-design-text-token="label-lg">Preview Official Form</span>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      const checks = document.querySelectorAll('.smart-check');
+      const badge = document.getElementById('prep-badge');
+      checks.forEach(c => c.addEventListener('change', function () {
+        const count = Array.from(checks).filter(x => x.checked).length;
+        if (badge) badge.textContent = count + '/' + checks.length;
+      }));
+
+      const tabs = document.querySelectorAll('.smart-tab');
+      const panels = document.querySelectorAll('.smart-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          tabs.forEach(t => {
+            t.setAttribute('aria-selected', 'false');
+            t.className = 'smart-tab px-gutter-md py-gutter-xs rounded-full bg-light-surface text-light-on-surface-variant border border-light-outline-variant font-label text-label-md shrink-0';
+          });
+          tab.setAttribute('aria-selected', 'true');
+          tab.className = 'smart-tab px-gutter-md py-gutter-xs rounded-full bg-indigo-accent text-light-on-secondary font-label text-label-md shrink-0';
+          const id = tab.getAttribute('aria-controls');
+          panels.forEach(p => p.id === id ? p.classList.remove('hidden') : p.classList.add('hidden'));
+        });
+      });
+
+      const inputs = document.querySelectorAll('.smart-input');
+      inputs.forEach(inp => {
+        inp.addEventListener('input', function () {
+          const key = inp.getAttribute('data-bind');
+          const val = inp.value.trim();
+          document.querySelectorAll('[data-preview="' + key + '"]').forEach(el => {
+            el.textContent = val || '[ဖြည့်ရန်]';
+            el.classList.toggle('text-blue-ink', Boolean(val));
+            el.classList.toggle('text-light-error', !val);
+          });
+          if (val) {
+            inp.classList.remove('border-2', 'border-light-error/60', 'bg-light-error-container/15');
+            inp.classList.add('border', 'border-light-outline-variant', 'bg-light-surface');
+          } else {
+            inp.classList.remove('border', 'border-light-outline-variant', 'bg-light-surface');
+            inp.classList.add('border-2', 'border-light-error/60', 'bg-light-error-container/15');
+          }
+        });
+      });
+
+      const chipSponsor = document.getElementById('chip-sponsor');
+      if (chipSponsor) {
+        chipSponsor.addEventListener('click', function () {
+          const f = document.getElementById('input-father-name');
+          const s = document.getElementById('input-sponsor-name');
+          if (f && s) {
+            s.value = f.value;
+            s.dispatchEvent(new Event('input'));
+          }
+        });
+      }
+
+      const fBtn = document.getElementById('rep-front-btn');
+      const bBtn = document.getElementById('rep-back-btn');
+      const fBox = document.getElementById('rep-front');
+      const bBox = document.getElementById('rep-back');
+      if (fBtn && bBtn) {
+        fBtn.addEventListener('click', () => {
+          fBox.classList.remove('hidden');
+          bBox.classList.add('hidden');
+          fBtn.className = 'px-gutter-sm py-1 rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md';
+          bBtn.className = 'px-gutter-sm py-1 rounded text-light-on-surface-variant font-label text-label-md';
+        });
+        bBtn.addEventListener('click', () => {
+          bBox.classList.remove('hidden');
+          fBox.classList.add('hidden');
+          bBtn.className = 'px-gutter-sm py-1 rounded bg-light-surface text-light-on-surface shadow-sm font-label text-label-md';
+          fBtn.className = 'px-gutter-sm py-1 rounded text-light-on-surface-variant font-label text-label-md';
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>

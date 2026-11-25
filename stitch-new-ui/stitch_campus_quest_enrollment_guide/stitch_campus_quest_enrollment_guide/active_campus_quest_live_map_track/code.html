@@ -1,0 +1,485 @@
+<!DOCTYPE html><html lang="my"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Campus Quest &amp; Live Map Track — UY CS Enrollment Guide</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'amber-bg': '#FEF3C7',
+        'amber-border': '#F59E0B',
+        'amber-text': '#92400E',
+        'indigo-accent': '#4F46E5',
+        'indigo-soft': '#EEF2FF',
+        'blue-primary': '#2563EB',
+        'blue-soft': '#EFF6FF',
+        'blue-ink': '#1D4ED8',
+        'success': '#15803D',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'paper': '#FFFDF7',
+        'paper-border': '#94A3B8',
+        'light-primary': '#004AC6',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#2563EB',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#4B41E1',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#EEF2FF',
+        'light-on-secondary-container': '#312E81',
+        'light-tertiary': '#824500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#FEF3C7',
+        'light-on-tertiary-container': '#92400E',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FEE2E2',
+        'light-on-error-container': '#991B1B',
+        'light-background': '#F8FAFC',
+        'light-on-background': '#0F172A',
+        'light-surface': '#FFFFFF',
+        'light-surface-dim': '#F1F5F9',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F8FAFC',
+        'light-surface-container': '#F1F5F9',
+        'light-surface-container-high': '#E2E8F0',
+        'light-surface-container-highest': '#CBD5E1',
+        'light-on-surface': '#0F172A',
+        'light-surface-variant': '#E2E8F0',
+        'light-on-surface-variant': '#475569',
+        'light-outline': '#94A3B8',
+        'light-outline-variant': '#E2E8F0',
+        'light-inverse-surface': '#0F172A',
+        'light-inverse-on-surface': '#F8FAFC',
+        'light-inverse-primary': '#93C5FD',
+        'light-shadow': '#0F172A',
+        'light-scrim': '#0F172A',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#2563EB',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#C3C0FF',
+        'dark-on-secondary': '#1D00A5',
+        'dark-secondary-container': '#3626CE',
+        'dark-on-secondary-container': '#E0E7FF',
+        'dark-tertiary': '#FFB77D',
+        'dark-on-tertiary': '#4D2600',
+        'dark-tertiary-container': '#78350F',
+        'dark-on-tertiary-container': '#FEF3C7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#0F172A',
+        'dark-on-background': '#F8FAFC',
+        'dark-surface': '#0F172A',
+        'dark-surface-dim': '#020617',
+        'dark-surface-bright': '#1E293B',
+        'dark-surface-container-lowest': '#020617',
+        'dark-surface-container-low': '#0F172A',
+        'dark-surface-container': '#1E293B',
+        'dark-surface-container-high': '#334155',
+        'dark-surface-container-highest': '#475569',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#334155',
+        'dark-on-surface-variant': '#CBD5E1',
+        'dark-outline': '#64748B',
+        'dark-outline-variant': '#334155',
+        'dark-inverse-surface': '#F8FAFC',
+        'dark-inverse-on-surface': '#0F172A',
+        'dark-inverse-primary': '#004AC6',
+        'dark-shadow': '#000000',
+        'dark-scrim': '#000000',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '24px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'title': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'body': ['"Noto Sans Myanmar"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['26px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['22px', { lineHeight: '32px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['18px', { lineHeight: '28px', letterSpacing: '-0.1px', fontWeight: '700' }],
+        'title-lg': ['17px', { lineHeight: '28px', fontWeight: '700' }],
+        'title-md': ['15px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '26px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '20px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '18px', fontWeight: '600' }],
+        'mono-sm': ['12px', { lineHeight: '18px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Myanmar:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-surface antialiased">
+  <div class="min-h-[884px] max-w-md mx-auto bg-light-background flex flex-col" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top Sticky Collapsible Dark Header -->
+    <header class="sticky top-0 z-30 bg-light-inverse-surface text-light-inverse-on-surface shadow-sm">
+      <div class="px-page-margin py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <a href="../landing-bento/LandingBento.html" aria-label="Back to landing" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-light-surface/10 text-light-inverse-on-surface hover:bg-light-surface/20 shrink-0">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+        </a>
+        <button type="button" id="map-quest-toggle" aria-expanded="false" aria-controls="map-quest-drawer" class="flex-1 flex items-center justify-between gap-gutter-sm text-left">
+          <div class="flex flex-col">
+            <span id="map-quest-label" class="font-label text-label-md text-light-inverse-primary uppercase tracking-wide" data-design-text-token="label-md">
+              CURRENT QUEST 1/4
+            </span>
+            <span class="font-body text-body-sm text-light-inverse-on-surface" data-design-text-token="body-sm">
+              Science Building — Form &amp; Clearance
+            </span>
+          </div>
+          <span id="map-quest-chevron" class="material-symbols-outlined text-[22px] text-light-inverse-on-surface shrink-0" aria-hidden="true">expand_more</span>
+        </button>
+      </div>
+
+      <nav id="map-quest-drawer" aria-label="Quest list" class="hidden border-t border-light-surface/15 px-page-margin py-gutter-md bg-light-inverse-surface flex flex-col gap-gutter-sm">
+        <a href="#mq-1" class="font-body text-body-sm text-light-inverse-on-surface" data-design-text-token="body-sm">1. Science Building — Form &amp; Library Stamp</a>
+        <a href="#mq-2" class="font-body text-body-sm text-light-inverse-on-surface/80" data-design-text-token="body-sm">2. ULB Top Floor — HOD Signature</a>
+        <a href="#mq-3" class="font-body text-body-sm text-light-inverse-on-surface/80" data-design-text-token="body-sm">3. Online Payment — UAB Pay Only</a>
+        <a href="#mq-4" class="font-body text-body-sm text-light-inverse-on-surface/80" data-design-text-token="body-sm">4. Science Building — Submit Form &amp; Receipt</a>
+      </nav>
+    </header>
+
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col gap-gutter-lg">
+
+      <!-- Interactive Gate-to-Building Map Track Card -->
+      <section aria-label="Gate to building route tracker" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+
+        <!-- Class Year Selector Pills -->
+        <div class="flex items-center gap-gutter-xs overflow-x-auto pb-1">
+          <button type="button" class="myear-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface-container text-light-on-surface-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">First Year</span>
+          </button>
+          <button type="button" class="myear-pill px-gutter-md py-gutter-xs rounded-full bg-blue-primary text-light-on-primary font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Second Year</span>
+          </button>
+          <button type="button" class="myear-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface-container text-light-on-surface-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Third Year</span>
+          </button>
+          <button type="button" class="myear-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface-container text-light-on-surface-variant font-label text-label-md shrink-0">
+            <span data-design-text-token="label-md">Fourth Year</span>
+          </button>
+        </div>
+
+        <!-- Two Prominent Route Toggle Pills -->
+        <div class="grid grid-cols-1 gap-gutter-sm">
+          <button type="button" id="route-main" class="w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-blue-soft border border-blue-primary text-blue-ink font-label text-label-md">
+            <span data-design-text-token="label-md">Main Gate ➔ Science Building</span>
+            <span class="font-mono text-mono-sm" data-design-text-token="mono-sm">4 min</span>
+          </button>
+          <button type="button" id="route-maler" class="w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-label text-label-md">
+            <span data-design-text-token="label-md">Maler Gate ➔ Science Building</span>
+            <span class="font-mono text-mono-sm" data-design-text-token="mono-sm">3 min</span>
+          </button>
+        </div>
+
+        <!-- Walking Direction Hint Banner -->
+        <div class="rounded-md bg-blue-soft px-gutter-md py-gutter-sm flex items-start gap-gutter-sm">
+          <span class="material-symbols-outlined text-[18px] text-blue-primary shrink-0 mt-0.5" aria-hidden="true">directions_walk</span>
+          <p id="route-hint-text" class="font-body text-body-sm text-light-on-surface text-pretty" data-design-text-token="body-sm">
+            အဓိပတိလမ်း (Main Gate) မှ တည့်တည့်ဝင်ပြီး ဘွဲ့နှင်းသဘင်ခန်းမရှေ့ ဘယ်ဘက်လမ်းအတိုင်း သိပ္ပံဆောင်သို့ လျှောက်ပါ။
+          </p>
+        </div>
+
+        <!-- Embedded Google Maps Route Container (h-56 rounded-xl) -->
+        <div class="relative h-56 rounded-xl border border-light-outline-variant bg-light-surface-container-low overflow-hidden flex items-center justify-center">
+          <svg viewBox="0 0 360 220" class="w-full h-full" aria-label="University of Yangon walking route map">
+            <!-- Campus grid blocks -->
+            <rect x="0" y="0" width="360" height="220" fill="#EFF6FF"></rect>
+            <rect x="24" y="24" width="90" height="52" rx="8" fill="#E2E8F0"></rect>
+            <rect x="240" y="24" width="96" height="56" rx="8" fill="#E2E8F0"></rect>
+            <rect x="132" y="138" width="96" height="58" rx="8" fill="#E2E8F0"></rect>
+            <!-- Campus roads -->
+            <path d="M 180 210 L 180 110 L 90 110" stroke="#CBD5E1" stroke-width="10" fill="none" stroke-linecap="round"></path>
+            <path d="M 320 110 L 180 110" stroke="#CBD5E1" stroke-width="10" fill="none" stroke-linecap="round"></path>
+            <!-- Active Route Path (Main Gate default) -->
+            <path id="svg-route-main" d="M 180 194 L 180 110 L 90 110 L 90 76" stroke="#2563EB" stroke-width="4" stroke-dasharray="6 4" fill="none" stroke-linecap="round"></path>
+            <!-- Alternate Route Path (Maler Gate) -->
+            <path id="svg-route-maler" d="M 316 110 L 90 110 L 90 76" stroke="#4F46E5" stroke-width="4" stroke-dasharray="6 4" fill="none" stroke-linecap="round" class="hidden"></path>
+            <!-- Landmarks -->
+            <circle cx="90" cy="64" r="10" fill="#2563EB"></circle>
+            <text x="106" y="68" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0F172A">Science Building</text>
+            <circle cx="180" cy="196" r="8" fill="#0F172A"></circle>
+            <text x="194" y="200" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#475569">Main Gate</text>
+            <circle cx="316" cy="110" r="8" fill="#4F46E5"></circle>
+            <text x="260" y="132" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#475569">Maler Gate</text>
+            <circle cx="288" cy="52" r="7" fill="#64748B"></circle>
+            <text x="252" y="40" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#475569">ULB (Top)</text>
+          </svg>
+        </div>
+
+        <!-- Open Full Route in Google Maps Dark Button -->
+        <a id="btn-full-route" href="https://www.google.com/maps/search/?api=1&amp;query=Science+Building+University+of+Yangon" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-gutter-sm px-gutter-lg py-gutter-md rounded-md bg-light-inverse-surface text-light-inverse-on-surface font-label text-label-lg hover:bg-light-on-surface transition-colors duration-state-change">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">map</span>
+          <span data-design-text-token="label-lg">Open Full Route in Google Maps</span>
+        </a>
+      </section>
+
+      <!-- 4-Step Vertical Quest Timeline -->
+      <section aria-label="4-step enrollment timeline" class="flex flex-col gap-gutter-md">
+
+        <!-- Quest 1 -->
+        <article id="mq-1" class="bg-light-surface border-2 border-blue-primary rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between gap-gutter-sm">
+            <span class="font-label text-label-md text-blue-primary" data-design-text-token="label-md">QUEST 1 · SCIENCE BUILDING</span>
+            <span class="font-mono text-mono-sm text-blue-ink" data-design-text-token="mono-sm">Active</span>
+          </div>
+          <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            သိပ္ပံဆောင် (အပိုင်း ၁) — ဖောင်ထုတ်ယူခြင်းနှင့် ကြွေးကျန်စစ်ဆေးခြင်း
+          </h2>
+          <p class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+            ကျောင်းသားရေးရာတွင် ဖောင်ထုတ်/စစ်ဆေးပြီး ဘဏ္ဍာရေးဌာနတွင် ဗဟိုစာကြည့်တိုက် စာအုပ်ကြွေးကျန်မရှိကြောင်း တံဆိပ်တုံး ထုပါ။
+          </p>
+
+          <!-- Science Building Indoor Floor Plan (Quest 1) -->
+          <div class="floorplan-widget flex flex-col gap-gutter-sm pt-gutter-xs" data-default-wing="right">
+            <div class="flex items-center justify-between gap-gutter-xs">
+              <span class="font-label text-label-md text-light-on-surface" data-design-text-token="label-md">Science Building Floor Plan</span>
+              <span class="font-body text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">အခန်းနှိပ်၍ကြည့်ပါ</span>
+            </div>
+            <div class="grid grid-cols-2 gap-gutter-xs">
+              <button type="button" data-wing="right" class="fp-btn px-gutter-sm py-gutter-xs rounded bg-blue-soft border border-blue-primary text-blue-ink font-body text-body-sm font-semibold">
+                <span data-design-text-token="body-sm">၁။ ကျောင်းသားရေးရာ (ညာဘက်)</span>
+              </button>
+              <button type="button" data-wing="left" class="fp-btn px-gutter-sm py-gutter-xs rounded bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-body text-body-sm">
+                <span data-design-text-token="body-sm">၂။ ဘဏ္ဍာရေး (ဘယ်ဘက်)</span>
+              </button>
+            </div>
+            <div class="rounded-md border border-light-outline-variant bg-light-surface-container-low p-gutter-sm">
+              <svg viewBox="0 0 340 164" class="w-full h-auto" aria-label="Science Building Indoor Floor Plan">
+                <rect x="8" y="8" width="324" height="148" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"></rect>
+                <text x="170" y="26" text-anchor="middle" font-family="Noto Sans Myanmar, Inter, sans-serif" font-size="11" font-weight="700" fill="#475569">သိပ္ပံဆောင် (Science Building)</text>
+                <!-- Left Wing: Finance -->
+                <g class="fp-room cursor-pointer" data-wing="left">
+                  <rect class="fp-rect" x="22" y="38" width="122" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"></rect>
+                  <text x="83" y="64" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="12" font-weight="700" fill="#0F172A">ဘဏ္ဍာရေး</text>
+                  <text x="83" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Left Wing (ဘယ်ဘက်)</text>
+                </g>
+                <!-- Right Wing: Student Affairs -->
+                <g class="fp-room cursor-pointer" data-wing="right">
+                  <rect class="fp-rect" x="196" y="38" width="122" height="62" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"></rect>
+                  <text x="257" y="64" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="12" font-weight="700" fill="#1D4ED8">ကျောင်းသားရေးရာ</text>
+                  <text x="257" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#1D4ED8">Right Wing (ညာဘက်)</text>
+                </g>
+                <!-- Walking Paths -->
+                <path class="fp-path-right" d="M 170 140 L 170 114 L 257 114 L 257 100" stroke="#2563EB" stroke-width="3" stroke-dasharray="5 4" fill="none" stroke-linecap="round"></path>
+                <path class="fp-path-left hidden" d="M 170 140 L 170 114 L 83 114 L 83 100" stroke="#2563EB" stroke-width="3" stroke-dasharray="5 4" fill="none" stroke-linecap="round"></path>
+                <!-- Bottom Center Entrance -->
+                <rect x="132" y="138" width="76" height="20" rx="4" fill="#0F172A"></rect>
+                <text x="170" y="152" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">ဝင်ပေါက်</text>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Quest 2 -->
+        <article id="mq-2" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-sm">
+          <div class="flex items-center justify-between gap-gutter-sm">
+            <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 2 · ULB TOP FLOOR</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=University+Library+Building+University+of+Yangon" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-blue-ink font-label text-label-md">
+              <span class="material-symbols-outlined text-[15px]" aria-hidden="true">location_on</span>
+              <span data-design-text-token="label-md">Map Route</span>
+            </a>
+          </div>
+          <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            ULB (အပေါ်ဆုံးထပ်) — ပါမောက္ခ (ဌာနမှူး) လက်မှတ်ယူခြင်း
+          </h2>
+          <p class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+            ကွန်ပျူတာသိပ္ပံပညာဌာန ရုံးခန်းတွင် ပါမောက္ခ(ဌာနမှူး) လက်မှတ်နှင့် ဌာနတံဆိပ်တုံး ယူပါ။
+          </p>
+        </article>
+
+        <!-- Quest 3: UAB Pay Only -->
+        <article id="mq-3" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-sm">
+          <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 3 · ONLINE PAYMENT</span>
+          <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            ကျောင်းလခ ပေးသွင်းခြင်း
+          </h2>
+          <div role="alert" class="bg-light-error-container border border-light-error/40 rounded-md p-gutter-md flex items-start gap-gutter-sm text-light-on-error-container">
+            <span class="material-symbols-outlined text-[20px] text-light-error shrink-0 mt-0.5" aria-hidden="true">error</span>
+            <div class="flex flex-col gap-gutter-xs">
+              <span class="font-label text-label-md text-light-on-error-container" data-design-text-token="label-md">UAB Pay Only</span>
+              <span class="font-body text-body-sm text-light-on-error-container text-pretty" data-design-text-token="body-sm">
+                UAB Pay တစ်မျိုးတည်းဖြင့်သာ ပေးသွင်းပြီး ချာလံမိတ္တူ (Receipt Copy) ကို မဖြစ်မနေ ပြင်ဆင်ထားပါ။
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Quest 4 -->
+        <article id="mq-4" class="bg-light-surface border border-light-outline-variant rounded-lg p-gutter-lg shadow-sm flex flex-col gap-gutter-md">
+          <span class="font-label text-label-md text-light-on-surface-variant" data-design-text-token="label-md">QUEST 4 · SCIENCE BUILDING</span>
+          <h2 class="font-title text-title-md text-light-on-surface" data-design-text-token="title-md">
+            သိပ္ပံဆောင် (အပိုင်း ၂) — ဖောင်နှင့် ချာလံမိတ္တူ ပြန်အပ်ခြင်း
+          </h2>
+          <p class="font-body text-body-sm text-light-on-surface-variant text-pretty" data-design-text-token="body-sm">
+            ဘဏ္ဍာရေးဌာန (ငွေလက်ခံသူ) ထံ လက်မှတ်စုံပါသော ဖောင်နှင့် ချာလံမိတ္တူကို အပ်နှံပါ။
+          </p>
+
+          <!-- Science Building Indoor Floor Plan (Quest 4 — defaults to Left Wing: Finance) -->
+          <div class="floorplan-widget flex flex-col gap-gutter-sm pt-gutter-xs" data-default-wing="left">
+            <div class="grid grid-cols-2 gap-gutter-xs">
+              <button type="button" data-wing="right" class="fp-btn px-gutter-sm py-gutter-xs rounded bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-body text-body-sm">
+                <span data-design-text-token="body-sm">၁။ ကျောင်းသားရေးရာ (ညာဘက်)</span>
+              </button>
+              <button type="button" data-wing="left" class="fp-btn px-gutter-sm py-gutter-xs rounded bg-blue-soft border border-blue-primary text-blue-ink font-body text-body-sm font-semibold">
+                <span data-design-text-token="body-sm">၂။ ဘဏ္ဍာရေး (ဘယ်ဘက်)</span>
+              </button>
+            </div>
+            <div class="rounded-md border border-light-outline-variant bg-light-surface-container-low p-gutter-sm">
+              <svg viewBox="0 0 340 164" class="w-full h-auto" aria-label="Science Building Indoor Floor Plan Quest 4">
+                <rect x="8" y="8" width="324" height="148" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"></rect>
+                <text x="170" y="26" text-anchor="middle" font-family="Noto Sans Myanmar, Inter, sans-serif" font-size="11" font-weight="700" fill="#475569">သိပ္ပံဆောင် (Science Building)</text>
+                <!-- Left Wing: Finance (Active) -->
+                <g class="fp-room cursor-pointer" data-wing="left">
+                  <rect class="fp-rect" x="22" y="38" width="122" height="62" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="2"></rect>
+                  <text x="83" y="64" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="12" font-weight="700" fill="#1D4ED8">ဘဏ္ဍာရေး</text>
+                  <text x="83" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#1D4ED8">Left Wing (ဘယ်ဘက်)</text>
+                </g>
+                <!-- Right Wing: Student Affairs -->
+                <g class="fp-room cursor-pointer" data-wing="right">
+                  <rect class="fp-rect" x="196" y="38" width="122" height="62" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"></rect>
+                  <text x="257" y="64" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="12" font-weight="700" fill="#0F172A">ကျောင်းသားရေးရာ</text>
+                  <text x="257" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#475569">Right Wing (ညာဘက်)</text>
+                </g>
+                <!-- Walking Paths -->
+                <path class="fp-path-right hidden" d="M 170 140 L 170 114 L 257 114 L 257 100" stroke="#2563EB" stroke-width="3" stroke-dasharray="5 4" fill="none" stroke-linecap="round"></path>
+                <path class="fp-path-left" d="M 170 140 L 170 114 L 83 114 L 83 100" stroke="#2563EB" stroke-width="3" stroke-dasharray="5 4" fill="none" stroke-linecap="round"></path>
+                <!-- Bottom Center Entrance -->
+                <rect x="132" y="138" width="76" height="20" rx="4" fill="#0F172A"></rect>
+                <text x="170" y="152" text-anchor="middle" font-family="Noto Sans Myanmar, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">ဝင်ပေါက်</text>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById('map-quest-toggle');
+      const drawer = document.getElementById('map-quest-drawer');
+      const chevron = document.getElementById('map-quest-chevron');
+      if (toggleBtn && drawer && chevron) {
+        toggleBtn.addEventListener('click', function () {
+          const open = !drawer.classList.contains('hidden');
+          drawer.classList.toggle('hidden', open);
+          toggleBtn.setAttribute('aria-expanded', String(!open));
+          chevron.textContent = open ? 'expand_more' : 'expand_less';
+        });
+      }
+
+      const yearPills = document.querySelectorAll('.myear-pill');
+      yearPills.forEach(p => {
+        p.addEventListener('click', function () {
+          yearPills.forEach(x => {
+            x.className = 'myear-pill px-gutter-md py-gutter-xs rounded-full bg-light-surface-container text-light-on-surface-variant font-label text-label-md shrink-0';
+          });
+          p.className = 'myear-pill px-gutter-md py-gutter-xs rounded-full bg-blue-primary text-light-on-primary font-label text-label-md shrink-0';
+        });
+      });
+
+      const rMain = document.getElementById('route-main');
+      const rMaler = document.getElementById('route-maler');
+      const svgMain = document.getElementById('svg-route-main');
+      const svgMaler = document.getElementById('svg-route-maler');
+      const hint = document.getElementById('route-hint-text');
+
+      if (rMain && rMaler) {
+        rMain.addEventListener('click', function () {
+          rMain.className = 'w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-blue-soft border border-blue-primary text-blue-ink font-label text-label-md';
+          rMaler.className = 'w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-label text-label-md';
+          svgMain.classList.remove('hidden');
+          svgMaler.classList.add('hidden');
+          hint.textContent = 'အဓိပတိလမ်း (Main Gate) မှ တည့်တည့်ဝင်ပြီး ဘွဲ့နှင်းသဘင်ခန်းမရှေ့ ဘယ်ဘက်လမ်းအတိုင်း သိပ္ပံဆောင်သို့ လျှောက်ပါ။';
+        });
+        rMaler.addEventListener('click', function () {
+          rMaler.className = 'w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-blue-soft border border-blue-primary text-blue-ink font-label text-label-md';
+          rMain.className = 'w-full flex items-center justify-between px-gutter-md py-gutter-sm rounded-md bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-label text-label-md';
+          svgMaler.classList.remove('hidden');
+          svgMain.classList.add('hidden');
+          hint.textContent = 'မာလာဂိတ် (Maler Gate) မှ ဝင်လာပြီး မာလာဆောင်ဘေးလမ်းအတိုင်း ညာဘက်သို့ ချိုးကွေ့လျှောက်ပါ။';
+        });
+      }
+
+      // Interactive Science Building Indoor Floor Plan Widgets
+      document.querySelectorAll('.floorplan-widget').forEach(widget => {
+        function setWing(wing) {
+          widget.querySelectorAll('.fp-btn').forEach(btn => {
+            const active = btn.getAttribute('data-wing') === wing;
+            btn.className = active
+              ? 'fp-btn px-gutter-sm py-gutter-xs rounded bg-blue-soft border border-blue-primary text-blue-ink font-body text-body-sm font-semibold'
+              : 'fp-btn px-gutter-sm py-gutter-xs rounded bg-light-surface-container-low border border-light-outline-variant text-light-on-surface-variant font-body text-body-sm';
+          });
+          widget.querySelectorAll('.fp-room').forEach(room => {
+            const active = room.getAttribute('data-wing') === wing;
+            const rect = room.querySelector('.fp-rect');
+            if (rect) {
+              rect.setAttribute('fill', active ? '#DBEAFE' : '#F8FAFC');
+              rect.setAttribute('stroke', active ? '#2563EB' : '#CBD5E1');
+              rect.setAttribute('stroke-width', active ? '2' : '1.5');
+            }
+          });
+          const pRight = widget.querySelector('.fp-path-right');
+          const pLeft = widget.querySelector('.fp-path-left');
+          if (pRight) pRight.classList.toggle('hidden', wing !== 'right');
+          if (pLeft) pLeft.classList.toggle('hidden', wing !== 'left');
+        }
+        widget.querySelectorAll('.fp-btn, .fp-room').forEach(el => {
+          el.addEventListener('click', () => setWing(el.getAttribute('data-wing')));
+        });
+      });
+    })();
+  </script>
+
+
+</body></html>
