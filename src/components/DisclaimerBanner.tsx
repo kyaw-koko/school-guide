@@ -5,7 +5,7 @@ export function DisclaimerBanner() {
   return (
     <div
       role="alert"
-      className="bg-amber-bg border-b border-amber-border/40 px-4 py-3 flex items-start gap-2.5 text-amber-text"
+      className="bg-amber-bg border-b border-amber-border/40 px-4 sm:px-6 lg:px-8 py-3 flex items-start md:items-center md:justify-center gap-2.5 text-amber-text"
     >
       <AlertTriangle className="w-[18px] h-[18px] shrink-0 mt-0.5" aria-hidden="true" />
       <p className="font-body text-xs leading-relaxed py-0.5 text-pretty">

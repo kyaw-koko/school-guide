@@ -41,6 +41,7 @@ interface FieldInputProps {
   label: string;
   value: string;
   placeholder?: string;
+  hint?: string;
   required?: boolean;
   type?: 'text' | 'tel';
   mono?: boolean;
@@ -51,6 +52,7 @@ function FieldInput({
   label,
   value,
   placeholder,
+  hint,
   required = false,
   type = 'text',
   mono = false,
@@ -76,6 +78,11 @@ function FieldInput({
             : 'border border-light-outline-variant bg-light-surface focus:border-indigo-accent focus:ring-indigo-accent'
         }`}
       />
+      {hint && (
+        <span className="font-body text-[11px] leading-relaxed text-indigo-accent bg-indigo-soft/60 rounded-md px-2 py-1">
+          {hint}
+        </span>
+      )}
     </label>
   );
 }
@@ -116,18 +123,22 @@ export function PrepAndPrefillView({
 }: PrepAndPrefillViewProps) {
   const [activeTab, setActiveTab] = useState<FormTabId>('academic');
 
-  const checklistGroupKey: ChecklistGroupKey =
-    selectedYear === 'First Year' ? 'firstYear' : 'returning';
+  const isFirstYear = selectedYear === 'First Year';
+  const checklistGroupKey: ChecklistGroupKey = isFirstYear ? 'firstYear' : 'returning';
   const activeChecklist = config.checklistByGroup[checklistGroupKey];
 
   const checkedCount = activeChecklist.items.filter((doc) =>
     checkedDocs.includes(doc.id)
   ).length;
 
-  const getTabMissingCount = (tabId: FormTabId) =>
-    config.tabRequiredFields[tabId].filter(
+  const getTabMissingCount = (tabId: FormTabId) => {
+    if (isFirstYear && tabId === 'exam') {
+      return 0;
+    }
+    return config.tabRequiredFields[tabId].filter(
       (fieldKey) => String(formData[fieldKey] ?? '').trim().length === 0
     ).length;
+  };
 
   const totalRemainingCount = config.formTabs.reduce(
     (sum, tab) => sum + getTabMissingCount(tab.id),
@@ -185,7 +196,7 @@ export function PrepAndPrefillView({
   return (
     <div className="flex-1 flex flex-col">
       {/* Sticky Task Flow Header */}
-      <header className="sticky top-0 z-30 bg-light-surface border-b border-light-outline-variant px-4 py-3 flex items-center justify-between gap-2.5">
+      <header className="sticky top-0 z-30 bg-light-surface border-b border-light-outline-variant px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-2.5 min-w-0">
           <button
             type="button"
@@ -220,7 +231,9 @@ export function PrepAndPrefillView({
         </div>
       </header>
 
-      <main className="flex-1 px-4 py-4 flex flex-col gap-5">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4 lg:py-6 flex flex-col gap-5 lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start">
+        {/* LEFT COLUMN (Desktop lg:col-span-6): Document Checklist + Form Pre-fill Wizard */}
+        <div className="flex flex-col gap-5 lg:col-span-6 min-w-0">
         {/* TOP SECTION: Dynamic Class-Year Document Checklist */}
         <section
           aria-label="Document checklist"
@@ -533,9 +546,10 @@ export function PrepAndPrefillView({
                     onChange={(v) => onUpdateField('studentNameMm', v)}
                   />
                   <FieldInput
-                    label="အမည် (အင်္ဂလိပ်စာဖြင့်)"
+                    label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.studentNameEn}
                     placeholder={config.sampleFormData.studentNameEn}
+                    hint="သတိပြုရန်: အမည်ရှေ့တွင် Mg သို့မဟုတ် Ma ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - Mg Aung Aung / Ma Su Su)"
                     required
                     onChange={(v) => onUpdateField('studentNameEn', v)}
                   />
@@ -645,9 +659,10 @@ export function PrepAndPrefillView({
                     onChange={(v) => onUpdateField('fatherNameMm', v)}
                   />
                   <FieldInput
-                    label="အဘအမည် (အင်္ဂလိပ်စာဖြင့်)"
+                    label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.fatherNameEn}
                     placeholder={config.sampleFormData.fatherNameEn}
+                    hint="သတိပြုရန်: အမည်ရှေ့တွင် U ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - U Ba)"
                     onChange={(v) => onUpdateField('fatherNameEn', v)}
                   />
                 </div>
@@ -682,42 +697,51 @@ export function PrepAndPrefillView({
                     onChange={(v) => onUpdateField('fatherNrc', v)}
                   />
                 </div>
-                <FieldInput
-                  label="အလုပ်အကိုင် / ရာထူး / ဌာန"
-                  value={formData.fatherOccupation}
-                  placeholder={config.sampleFormData.fatherOccupation}
-                  required
-                  onChange={(v) => onUpdateField('fatherOccupation', v)}
-                />
-                <div className="flex flex-col gap-1.5">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="font-body text-xs font-semibold leading-relaxed text-light-on-surface py-0.5">
-                      အဘ နေရပ်လိပ်စာ (အပြည့်အစုံ)
-                    </span>
-                    <QuickFillButton
-                      label="Same as Student's Permanent Address"
-                      disabled={!formData.studentPermanentAddress.trim()}
-                      onClick={() =>
-                        onUpdateField('fatherAddress', formData.studentPermanentAddress)
-                      }
+                <div className="pt-2 border-t border-light-outline-variant flex flex-col gap-3">
+                  <span className="font-body text-xs font-bold leading-relaxed text-light-on-surface">
+                    အဘ၏ အလုပ်အကိုင် နှင့် နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)
+                  </span>
+                  <FieldInput
+                    label="အလုပ်အကိုင် / ရာထူး / ဌာန"
+                    value={formData.fatherOccupation}
+                    placeholder={config.sampleFormData.fatherOccupation}
+                    required
+                    onChange={(v) => onUpdateField('fatherOccupation', v)}
+                  />
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <span className="font-body text-xs font-semibold leading-relaxed text-light-on-surface py-0.5">
+                        အဘ၏ နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်) <span className="text-light-error">*</span>
+                      </span>
+                      <QuickFillButton
+                        label="ကျောင်းသားလိပ်စာအတိုင်း ဖြည့်မည်"
+                        disabled={!formData.studentPermanentAddress.trim()}
+                        onClick={() =>
+                          onUpdateField('fatherAddress', formData.studentPermanentAddress)
+                        }
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      value={formData.fatherAddress}
+                      placeholder={config.sampleFormData.fatherAddress}
+                      onChange={(e) => onUpdateField('fatherAddress', e.target.value)}
+                      className={`w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface focus:outline-none focus:ring-1 transition-colors ${
+                        formData.fatherAddress.trim().length === 0
+                          ? 'border-2 border-red-300 bg-light-error-container/15 focus:border-light-error focus:ring-light-error'
+                          : 'border border-light-outline-variant bg-light-surface focus:border-indigo-accent focus:ring-indigo-accent'
+                      }`}
                     />
                   </div>
-                  <input
-                    type="text"
-                    value={formData.fatherAddress}
-                    placeholder={config.sampleFormData.fatherAddress}
-                    onChange={(e) => onUpdateField('fatherAddress', e.target.value)}
-                    className="w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface border border-light-outline-variant bg-light-surface focus:outline-none focus:border-indigo-accent focus:ring-1 focus:ring-indigo-accent"
+                  <FieldInput
+                    label="အဘ ဖုန်းနံပါတ်"
+                    value={formData.fatherPhone}
+                    placeholder={config.sampleFormData.fatherPhone}
+                    type="tel"
+                    mono
+                    onChange={(v) => onUpdateField('fatherPhone', v)}
                   />
                 </div>
-                <FieldInput
-                  label="အဘ ဖုန်းနံပါတ်"
-                  value={formData.fatherPhone}
-                  placeholder={config.sampleFormData.fatherPhone}
-                  type="tel"
-                  mono
-                  onChange={(v) => onUpdateField('fatherPhone', v)}
-                />
               </>
             )}
 
@@ -743,9 +767,10 @@ export function PrepAndPrefillView({
                     onChange={(v) => onUpdateField('motherNameMm', v)}
                   />
                   <FieldInput
-                    label="အမိအမည် (အင်္ဂလိပ်စာဖြင့်)"
+                    label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.motherNameEn}
                     placeholder={config.sampleFormData.motherNameEn}
+                    hint="သတိပြုရန်: အမည်ရှေ့တွင် Daw ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - Daw Mya)"
                     onChange={(v) => onUpdateField('motherNameEn', v)}
                   />
                 </div>
@@ -780,79 +805,98 @@ export function PrepAndPrefillView({
                     onChange={(v) => onUpdateField('motherNrc', v)}
                   />
                 </div>
-                <FieldInput
-                  label="အလုပ်အကိုင် / ရာထူး / ဌာန"
-                  value={formData.motherOccupation}
-                  placeholder={config.sampleFormData.motherOccupation}
-                  required
-                  onChange={(v) => onUpdateField('motherOccupation', v)}
-                />
-                <div className="flex flex-col gap-1.5">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <span className="font-body text-xs font-semibold leading-relaxed text-light-on-surface py-0.5">
-                      အမိ နေရပ်လိပ်စာ (အပြည့်အစုံ)
-                    </span>
-                    <QuickFillButton
-                      label="Same as Student's Permanent Address"
-                      disabled={!formData.studentPermanentAddress.trim()}
-                      onClick={() =>
-                        onUpdateField('motherAddress', formData.studentPermanentAddress)
-                      }
+                <div className="pt-2 border-t border-light-outline-variant flex flex-col gap-3">
+                  <span className="font-body text-xs font-bold leading-relaxed text-light-on-surface">
+                    အမိ၏ အလုပ်အကိုင် နှင့် နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)
+                  </span>
+                  <FieldInput
+                    label="အလုပ်အကိုင် / ရာထူး / ဌာန"
+                    value={formData.motherOccupation}
+                    placeholder={config.sampleFormData.motherOccupation}
+                    required
+                    onChange={(v) => onUpdateField('motherOccupation', v)}
+                  />
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <span className="font-body text-xs font-semibold leading-relaxed text-light-on-surface py-0.5">
+                        အမိ၏ နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်) <span className="text-light-error">*</span>
+                      </span>
+                      <QuickFillButton
+                        label="ကျောင်းသားလိပ်စာအတိုင်း ဖြည့်မည်"
+                        disabled={!formData.studentPermanentAddress.trim()}
+                        onClick={() =>
+                          onUpdateField('motherAddress', formData.studentPermanentAddress)
+                        }
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      value={formData.motherAddress}
+                      placeholder={config.sampleFormData.motherAddress}
+                      onChange={(e) => onUpdateField('motherAddress', e.target.value)}
+                      className={`w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface focus:outline-none focus:ring-1 transition-colors ${
+                        formData.motherAddress.trim().length === 0
+                          ? 'border-2 border-red-300 bg-light-error-container/15 focus:border-light-error focus:ring-light-error'
+                          : 'border border-light-outline-variant bg-light-surface focus:border-indigo-accent focus:ring-indigo-accent'
+                      }`}
                     />
                   </div>
-                  <input
-                    type="text"
-                    value={formData.motherAddress}
-                    placeholder={config.sampleFormData.motherAddress}
-                    onChange={(e) => onUpdateField('motherAddress', e.target.value)}
-                    className="w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface border border-light-outline-variant bg-light-surface focus:outline-none focus:border-indigo-accent focus:ring-1 focus:ring-indigo-accent"
+                  <FieldInput
+                    label="အမိ ဖုန်းနံပါတ်"
+                    value={formData.motherPhone}
+                    placeholder={config.sampleFormData.motherPhone}
+                    type="tel"
+                    mono
+                    onChange={(v) => onUpdateField('motherPhone', v)}
                   />
                 </div>
-                <FieldInput
-                  label="အမိ ဖုန်းနံပါတ်"
-                  value={formData.motherPhone}
-                  placeholder={config.sampleFormData.motherPhone}
-                  type="tel"
-                  mono
-                  onChange={(v) => onUpdateField('motherPhone', v)}
-                />
               </>
             )}
 
-            {activeTab === 'exam' && (
-              <>
-                <FieldInput
-                  label="ပထမနှစ် အဓိကဘာသာ"
-                  value={formData.pastExamMajor}
-                  placeholder={config.sampleFormData.pastExamMajor}
-                  required
-                  onChange={(v) => onUpdateField('pastExamMajor', v)}
-                />
-                <div className="grid grid-cols-2 gap-3">
-                  <FieldInput
-                    label="ခုံအမှတ်"
-                    value={formData.pastExamRollNo}
-                    placeholder={config.sampleFormData.pastExamRollNo}
-                    required
-                    onChange={(v) => onUpdateField('pastExamRollNo', v)}
-                  />
-                  <FieldInput
-                    label="ခုနှစ်"
-                    value={formData.pastExamYear}
-                    placeholder={config.sampleFormData.pastExamYear}
-                    required
-                    onChange={(v) => onUpdateField('pastExamYear', v)}
-                  />
+            {activeTab === 'exam' &&
+              (isFirstYear ? (
+                <div
+                  role="note"
+                  className="rounded-xl bg-blue-soft border border-blue-primary/25 p-3.5 text-light-on-surface"
+                >
+                  <p className="font-body text-xs font-semibold leading-relaxed py-0.5 text-pretty">
+                    Fresher (ပထမနှစ်) ကျောင်းသားများသည် တက္ကသိုလ်စာမေးပွဲ ဖြေဆိုဖူးခြင်း မရှိသေးပါသဖြင့် ဤဇယားကွက်ကို အလွတ်ထားရပါမည်။
+                  </p>
                 </div>
-                <FieldInput
-                  label="အောင် / ရှုံး"
-                  value={formData.pastExamResult}
-                  placeholder={config.sampleFormData.pastExamResult}
-                  required
-                  onChange={(v) => onUpdateField('pastExamResult', v)}
-                />
-              </>
-            )}
+              ) : (
+                <>
+                  <FieldInput
+                    label="ပထမနှစ် အဓိကဘာသာ"
+                    value={formData.pastExamMajor}
+                    placeholder={config.sampleFormData.pastExamMajor}
+                    required
+                    onChange={(v) => onUpdateField('pastExamMajor', v)}
+                  />
+                  <div className="grid grid-cols-2 gap-3">
+                    <FieldInput
+                      label="ခုံအမှတ်"
+                      value={formData.pastExamRollNo}
+                      placeholder={config.sampleFormData.pastExamRollNo}
+                      required
+                      onChange={(v) => onUpdateField('pastExamRollNo', v)}
+                    />
+                    <FieldInput
+                      label="ခုနှစ်"
+                      value={formData.pastExamYear}
+                      placeholder={config.sampleFormData.pastExamYear}
+                      required
+                      onChange={(v) => onUpdateField('pastExamYear', v)}
+                    />
+                  </div>
+                  <FieldInput
+                    label="အောင် / ရှုံး"
+                    value={formData.pastExamResult}
+                    placeholder={config.sampleFormData.pastExamResult}
+                    required
+                    onChange={(v) => onUpdateField('pastExamResult', v)}
+                  />
+                </>
+              ))}
 
             {activeTab === 'sponsor' && (
               <>
@@ -980,27 +1024,31 @@ export function PrepAndPrefillView({
             )}
           </div>
 
-          {/* Primary Preview CTA Button (Stitch Smart Form Pattern) */}
+          {/* Primary Preview CTA Button (Mobile/Tablet scroll-to-preview) */}
           <button
             type="button"
             onClick={scrollToPreview}
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-indigo-accent text-white font-label text-sm font-semibold shadow-sm hover:bg-light-secondary transition-colors cursor-pointer"
+            className="lg:hidden w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-indigo-accent text-white font-label text-sm font-semibold shadow-sm hover:bg-light-secondary transition-colors cursor-pointer"
           >
             <FileText className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>{config.prepHeader.viewFormButton}</span>
           </button>
         </section>
+        </div>
 
-        {/* BOTTOM SECTION: Full Two-Sided Official Form Replica */}
-        <FormLivePreview
-          formData={formData}
-          sampleData={config.sampleFormData}
-          copy={config.formPreviewCopy}
-          remainingCount={totalRemainingCount}
-        />
+        {/* RIGHT COLUMN (Desktop lg:col-span-6 sticky): Full Two-Sided Official Form Replica */}
+        <div className="lg:col-span-6 lg:sticky lg:top-20 min-w-0">
+          <FormLivePreview
+            formData={formData}
+            sampleData={config.sampleFormData}
+            copy={config.formPreviewCopy}
+            remainingCount={totalRemainingCount}
+            isFirstYear={isFirstYear}
+          />
+        </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between gap-3 pt-2 pb-6">
+        <div className="lg:col-span-12 flex items-center justify-between gap-3 pt-2 pb-6">
           <button
             type="button"
             onClick={onResetProgress}

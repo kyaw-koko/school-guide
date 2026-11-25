@@ -86,7 +86,9 @@ export function QuestDashboard({
         onSelectQuest={handleSelectQuest}
       />
 
-      <main className="flex-1 px-4 py-4 flex flex-col gap-4">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-4 lg:py-6 flex flex-col gap-4 lg:grid lg:grid-cols-12 lg:gap-8 lg:items-start">
+        {/* LEFT COLUMN (Desktop lg:col-span-7): Year Selector + 4-Step Campus Quest Timeline */}
+        <div className="flex flex-col gap-4 lg:col-span-7 min-w-0">
         {/* Year Selector Pills */}
         <section aria-label="Academic year selector" className="flex flex-col gap-2">
           <span className="font-label text-xs font-semibold text-light-on-surface-variant">
@@ -113,16 +115,18 @@ export function QuestDashboard({
           </div>
         </section>
 
-        {/* Live Campus Walking Route Tracker */}
-        <LiveCampusMap
-          routes={config.campusRoutes}
-          selectedRouteId={selectedRoute}
-          onSelectRoute={onSelectRoute}
-          title={config.questUiCopy.liveMapTitle}
-          landmarkBadge={config.questUiCopy.mapLandmarkBadge}
-          openFullRouteLabel={config.questUiCopy.openFullRouteLabel}
-          fallbackNotice={config.questUiCopy.mapFallbackNotice}
-        />
+        {/* Mobile/Tablet Live Campus Walking Route Tracker (hidden on lg where it sits in sticky Right Column) */}
+        <div className="lg:hidden">
+          <LiveCampusMap
+            routes={config.campusRoutes}
+            selectedRouteId={selectedRoute}
+            onSelectRoute={onSelectRoute}
+            title={config.questUiCopy.liveMapTitle}
+            landmarkBadge={config.questUiCopy.mapLandmarkBadge}
+            openFullRouteLabel={config.questUiCopy.openFullRouteLabel}
+            fallbackNotice={config.questUiCopy.mapFallbackNotice}
+          />
+        </div>
 
         {/* All Quests Completed Banner */}
         {allCompleted && (
@@ -226,12 +230,14 @@ export function QuestDashboard({
                   </div>
                 )}
 
-                {/* Dark-Mode Architectural CAD Interior Blueprint (Quests 1 & 4) */}
+                {/* Dark-Mode Architectural CAD Interior Blueprint (Quests 1 & 4 on Mobile/Tablet; pinned in Right Column on lg) */}
                 {quest.interiorDefaultWing && (
-                  <ScienceInteriorBlueprint
-                    config={config.scienceInterior}
-                    defaultWing={quest.interiorDefaultWing}
-                  />
+                  <div className="lg:hidden">
+                    <ScienceInteriorBlueprint
+                      config={config.scienceInterior}
+                      defaultWing={quest.interiorDefaultWing}
+                    />
+                  </div>
                 )}
 
                 {/* Sub-quests Checklist */}
@@ -344,6 +350,27 @@ export function QuestDashboard({
             </div>
           )}
         </section>
+        </div>
+
+        {/* RIGHT COLUMN (Desktop lg:col-span-5 sticky): LiveCampusMap + ScienceInteriorBlueprint */}
+        <aside className="hidden lg:block lg:col-span-5 lg:sticky lg:top-20 space-y-6 min-w-0">
+          <LiveCampusMap
+            routes={config.campusRoutes}
+            selectedRouteId={selectedRoute}
+            onSelectRoute={onSelectRoute}
+            title={config.questUiCopy.liveMapTitle}
+            landmarkBadge={config.questUiCopy.mapLandmarkBadge}
+            openFullRouteLabel={config.questUiCopy.openFullRouteLabel}
+            fallbackNotice={config.questUiCopy.mapFallbackNotice}
+          />
+          <div className="bg-light-surface border border-light-outline-variant rounded-2xl p-4 shadow-sm">
+            <ScienceInteriorBlueprint
+              key={activeQuest.interiorDefaultWing ?? 'right'}
+              config={config.scienceInterior}
+              defaultWing={activeQuest.interiorDefaultWing ?? 'right'}
+            />
+          </div>
+        </aside>
       </main>
     </div>
   );

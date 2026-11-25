@@ -36,7 +36,7 @@ export function StickyQuestHeader({
 
   return (
     <header className="sticky top-0 z-30 bg-light-inverse-surface text-light-inverse-on-surface shadow-sm">
-      <div className="px-4 py-3 flex items-center justify-between gap-2.5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-2.5">
         <button
           type="button"
           onClick={onBackHome}
@@ -84,7 +84,7 @@ export function StickyQuestHeader({
         <div className="overflow-hidden">
           <nav
             aria-label="All quests overview"
-            className="border-t border-white/15 px-4 py-3 bg-light-inverse-surface flex flex-col gap-2"
+            className="max-w-6xl mx-auto border-t border-white/15 px-4 sm:px-6 lg:px-8 py-3 bg-light-inverse-surface flex flex-col gap-2"
           >
             {config.quests.map((quest) => {
               const done = isQuestDone(quest);

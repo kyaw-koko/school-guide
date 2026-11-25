@@ -17,6 +17,7 @@ interface FormLivePreviewProps {
   sampleData: EnrollmentFormData;
   copy: FormPreviewCopy;
   remainingCount: number;
+  isFirstYear?: boolean;
 }
 
 function PreviewValue({
@@ -69,9 +70,9 @@ function ParentMergedDetails({
       <span>
         <PreviewValue value={occupation} emptyLabel={emptyLabel} />
       </span>
-      {address.trim() && (
-        <span className="text-blue-700 font-semibold">{address.trim()}</span>
-      )}
+      <span>
+        <PreviewValue value={address} emptyLabel={emptyLabel} />
+      </span>
       {phone.trim() && (
         <span className="font-mono text-blue-700 font-semibold">
           {phone.trim()}
@@ -86,6 +87,7 @@ export function FormLivePreview({
   sampleData,
   copy,
   remainingCount,
+  isFirstYear = false,
 }: FormLivePreviewProps) {
   const [side, setSide] = useState<'front' | 'back'>('front');
   const [showSample, setShowSample] = useState(false);
@@ -292,7 +294,7 @@ export function FormLivePreview({
                 {copy.tableScrollHint}
               </p>
               <div className="overflow-x-auto -mx-1 px-1 pb-1">
-                <table className="w-full min-w-[420px] border-collapse border border-paper-border text-left text-[10px] leading-relaxed">
+                <table className="w-full min-w-[420px] lg:min-w-0 border-collapse border border-paper-border text-left text-[10px] lg:text-[11px] leading-relaxed">
                   <thead>
                     <tr className="bg-light-surface-container-low">
                       <th className="border border-paper-border p-1.5 font-body font-semibold w-[28%]">
@@ -494,7 +496,7 @@ export function FormLivePreview({
                 {copy.pastExamsTitle}
               </p>
               <div className="overflow-x-auto -mx-1 px-1">
-                <table className="w-full min-w-[360px] border-collapse border border-paper-border text-left text-[10px] leading-relaxed">
+                <table className="w-full min-w-[360px] lg:min-w-0 border-collapse border border-paper-border text-left text-[10px] lg:text-[11px] leading-relaxed">
                   <thead>
                     <tr className="bg-light-surface-container-low">
                       <th className="border border-paper-border p-1.5">{copy.pastExamsHeaders.yearLevel}</th>
@@ -510,16 +512,32 @@ export function FormLivePreview({
                         {copy.pastExamsFirstYearLabel}
                       </td>
                       <td className="border border-paper-border p-1.5">
-                        <PreviewValue value={activeData.pastExamMajor} emptyLabel={copy.emptyPlaceholder} />
+                        {isFirstYear ? (
+                          '\u00A0'
+                        ) : (
+                          <PreviewValue value={activeData.pastExamMajor} emptyLabel={copy.emptyPlaceholder} />
+                        )}
                       </td>
                       <td className="border border-paper-border p-1.5">
-                        <PreviewValue value={activeData.pastExamRollNo} emptyLabel={copy.emptyPlaceholder} />
+                        {isFirstYear ? (
+                          '\u00A0'
+                        ) : (
+                          <PreviewValue value={activeData.pastExamRollNo} emptyLabel={copy.emptyPlaceholder} />
+                        )}
                       </td>
                       <td className="border border-paper-border p-1.5">
-                        <PreviewValue value={activeData.pastExamYear} emptyLabel={copy.emptyPlaceholder} />
+                        {isFirstYear ? (
+                          '\u00A0'
+                        ) : (
+                          <PreviewValue value={activeData.pastExamYear} emptyLabel={copy.emptyPlaceholder} />
+                        )}
                       </td>
                       <td className="border border-paper-border p-1.5">
-                        <PreviewValue value={activeData.pastExamResult} emptyLabel={copy.emptyPlaceholder} />
+                        {isFirstYear ? (
+                          '\u00A0'
+                        ) : (
+                          <PreviewValue value={activeData.pastExamResult} emptyLabel={copy.emptyPlaceholder} />
+                        )}
                       </td>
                     </tr>
                   </tbody>

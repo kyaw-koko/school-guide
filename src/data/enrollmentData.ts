@@ -75,7 +75,8 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
         id: 'mini-photos',
         icon: 'camera',
         title: 'လိုင်စင်ဓာတ်ပုံ (၄) ပုံ',
-        subtitle: '၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်',
+        subtitle:
+          '၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်',
         fullWidth: true,
       },
     ],
@@ -92,7 +93,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
         icon: 'camera',
         textPrefix: 'လိုင်စင်ဓာတ်ပုံ ',
         textHighlight: '(၄) ပုံ',
-        textSuffix: ' — ၁ ပုံ ဖောင်ထိပ်တွင်ကပ်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့်ညှပ်',
+        textSuffix: ' — ၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရန် (ကော်ဘူး ယူဆောင်လာပါ)',
       },
       {
         id: 'uab-pay',
@@ -123,7 +124,8 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
           {
             id: 'doc-photos',
             title: 'လိုင်စင်ဓာတ်ပုံ (၄) ပုံ',
-            description: '၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်',
+            description:
+              '၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်',
             badge: 'ဖောင်နှင့်အတူတင်ရန်',
           },
           {
@@ -155,7 +157,8 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
           {
             id: 'doc-photos',
             title: 'လိုင်စင်ဓာတ်ပုံ (၄) ပုံ',
-            description: '၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်',
+            description:
+              '၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်',
             badge: 'ဖောင်နှင့်အတူတင်ရန်',
           },
           {
@@ -203,8 +206,22 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
         'studentPermanentAddress',
         'studentPhone',
       ],
-      father: ['fatherNameMm', 'fatherRace', 'fatherReligion', 'fatherNrc', 'fatherOccupation'],
-      mother: ['motherNameMm', 'motherRace', 'motherReligion', 'motherNrc', 'motherOccupation'],
+      father: [
+        'fatherNameMm',
+        'fatherRace',
+        'fatherReligion',
+        'fatherNrc',
+        'fatherOccupation',
+        'fatherAddress',
+      ],
+      mother: [
+        'motherNameMm',
+        'motherRace',
+        'motherReligion',
+        'motherNrc',
+        'motherOccupation',
+        'motherAddress',
+      ],
       exam: ['pastExamMajor', 'pastExamRollNo', 'pastExamYear', 'pastExamResult'],
       sponsor: ['sponsorName', 'sponsorRelation', 'sponsorAddress', 'currentContactAddress'],
     },
@@ -339,8 +356,8 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
       tableScrollHint: '← ဇယားအပြည့်အစုံ ဘေးသို့ဆွဲကြည့်နိုင်သည် →',
       frontTabLabel: 'Front Page (ရှေ့မျက်နှာစာ)',
       backTabLabel: 'Back Page (နောက်ကျောဘက်)',
-      photoBoxLabel: 'ဓာတ်ပုံ (၁) ပုံ ကပ်ရန်',
-      photoInstructionNote: 'ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်',
+      photoBoxLabel: 'ဓာတ်ပုံ ကော်ဖြင့်ကပ်ရန်',
+      photoInstructionNote: 'လိုင်စင်ဓာတ်ပုံ ၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ပါ',
       universityTitle: 'ရန်ကုန်တက္ကသိုလ်',
       academicYearSuffix: 'ပညာသင်နှစ်',
       programLevels: ['ဘွဲ့ကြို', 'ဘွဲ့လွန်'] as const,
@@ -541,7 +558,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
           },
           {
             id: 'q1-s2',
-            text: '၂။ ဖောင်ထိပ်တွင် ဓာတ်ပုံ (၁) ပုံကပ်ပြီး ကျန် (၃) ပုံကို ကလစ်ဖြင့် ညှပ်ထည့်ကာ အချက်အလက်များ ပြည့်စုံစွာဖြည့်ပါ။',
+            text: '၂။ သတ်မှတ်နေရာများတွင် လိုင်စင်ဓာတ်ပုံ (၄) ပုံလုံးကို ကော်ဖြင့် သေချာကပ်ပြီး အချက်အလက်များ ပြည့်စုံမှန်ကန်စွာ ဖြည့်သွင်းပါ။',
             hasPrefillShortcut: true,
           },
           {

@@ -33,19 +33,19 @@
 ### 3.3 View 2: Preparation Checklist & Form Pre-fill Wizard
 * **Section A: Dynamic Class-Year Document Checklist**
   * Top Class Year toggle (`First Year (လူသစ်)` vs. `Second / Third / Fourth Year (သဟောင်း)`) synced with the Quest Dashboard:
-    * **First Year (လူသစ်):** Requires submitting original & photocopied verification documents alongside the form (`မှတ်ပုံတင် မူရင်း/မိတ္တူ`, `၁၀ တန်း အောင်လက်မှတ်/အမှတ်စာရင်း မူရင်း/မိတ္တူ`, `လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — ၁ ပုံကပ်၊ ၃ ပုံ ညှပ်`, `UAB Pay`).
-    * **Returning Students (`Second / Third / Fourth Year`, Default):** Only **လိုင်စင်ဓာတ်ပုံ (၄) ပုံ** (`၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်`) is submitted with the form; NRC and past exam/registration info are **NOT submitted** (`ရုံးသို့ တင်ရန်မဟုတ်ပါ — ဖောင်တွင် မှန်ကန်စွာ ကြည့်ကူးဖြည့်နိုင်ရန်သာ ယူဆောင်လာရန်`), plus `UAB Pay`.
+    * **First Year (လူသစ်):** Requires submitting original & photocopied verification documents alongside the form (`မှတ်ပုံတင် မူရင်း/မိတ္တူ`, `၁၀ တန်း အောင်လက်မှတ်/အမှတ်စာရင်း မူရင်း/မိတ္တူ`, `လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — (၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်)`, `UAB Pay`).
+    * **Returning Students (`Second / Third / Fourth Year`, Default):** Only **လိုင်စင်ဓာတ်ပုံ (၄) ပုံ** (`၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်`) is submitted with the form; NRC and past exam/registration info are **NOT submitted** (`ရုံးသို့ တင်ရန်မဟုတ်ပါ — ဖောင်တွင် မှန်ကန်စွာ ကြည့်ကူးဖြည့်နိုင်ရန်သာ ယူဆောင်လာရန်`), plus `UAB Pay`.
 * **Section B: Multi-Step Form Pre-fill Wizard (Matching Official UY Form)**
   * Organize inputs into 6 clean tabs/steps so mobile screens aren't overwhelmed:
     * **Tab 1 (`Academic` / သင်တန်းအချက်အလက်):**
       * Header: `academicYear` (`၂၀၂၆ - ၂၀၂၇`), `programLevel` (`ဘွဲ့ကြို` vs `ဘွဲ့လွန်`, default `ဘွဲ့ကြို` with strikethrough on unselected in preview).
       * Academic Box: `classYear` (`ဒုတိယနှစ်`), `major` (`ကွန်ပျူတာသိပ္ပံ`), `rollNo` (`ပကသ - ...`), `uniRegNo` (`ရတ - ...`), `uniEntryYear` (`၂၀၂၅ - ၂၀၂၆`).
     * **Tab 2 (`Student` / ကျောင်းသား/သူ):**
-      * `studentNameMm`, `studentNameEn`, `studentRace`, `studentReligion`, `studentBirthplace` (မြို့နယ်/ပြည်နယ်/တိုင်း), `studentNrc`, `studentDob`, `matricRollNo`, `matricYear`, `matricCenter`, `studentPermanentAddress`, `studentPhone`.
+      * `studentNameMm`, `studentNameEn` (labeled `"အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"` with `Mg` / `Ma` prefix reminder), `studentRace`, `studentReligion`, `studentBirthplace` (မြို့နယ်/ပြည်နယ်/တိုင်း), `studentNrc`, `studentDob`, `matricRollNo`, `matricYear`, `matricCenter`, `studentPermanentAddress`, `studentPhone`.
     * **Tab 3 (`Father` / အဘ):**
-      * `fatherNameMm`, `fatherNameEn`, `fatherRace`, `fatherReligion`, `fatherBirthplace`, `fatherNrc`, `fatherOccupation`, `fatherAddress` (with `"Same as Student's Permanent Address"` quick-fill), `fatherPhone`.
+      * `fatherNameMm`, `fatherNameEn` (labeled `"အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"` with `U` prefix reminder), `fatherRace`, `fatherReligion`, `fatherBirthplace`, `fatherNrc`, `"အဘ၏ အလုပ်အကိုင် နှင့် နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)"` (`fatherOccupation`, `fatherAddress` labeled `"အဘ၏ နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)"` with `"ကျောင်းသားလိပ်စာအတိုင်း ဖြည့်မည်"` quick-copy), `fatherPhone`.
     * **Tab 4 (`Mother` / အမိ):**
-      * `motherNameMm`, `motherNameEn`, `motherRace`, `motherReligion`, `motherBirthplace`, `motherNrc`, `motherOccupation`, `motherAddress` (with `"Same as Student's Permanent Address"` quick-fill), `motherPhone`.
+      * `motherNameMm`, `motherNameEn` (labeled `"အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"` with `Daw` prefix reminder), `motherRace`, `motherReligion`, `motherBirthplace`, `motherNrc`, `"အမိ၏ အလုပ်အကိုင် နှင့် နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)"` (`motherOccupation`, `motherAddress` labeled `"အမိ၏ နေရပ်လိပ်စာ (အပြည့်အစုံ ဖြည့်ရန်)"` with `"ကျောင်းသားလိပ်စာအတိုင်း ဖြည့်မည်"` quick-copy), `motherPhone`.
     * **Tab 5 (`Past Exam` / ဖြေဆိုခဲ့သည့် စာမေးပွဲများ):**
       * `pastExamMajor` (`ကွန်ပျူတာသိပ္ပံ`), `pastExamRollNo`, `pastExamYear` (`၂၀၂၅ - ၂၀၂၆`), `pastExamResult` (`အောင်`).
     * **Tab 6 (`Sponsor` / နောက်ကျောဘက် ဝန်ခံချက်နှင့် ထောက်ပံ့သူ):**
@@ -74,7 +74,7 @@
     * *Map Button:* Direct link to Science Building on Google Maps.
     * *Sub-quests:*
       1. ကျောင်းသားရေးရာ ကောင်တာတွင် 'သဟောင်းများ ပညာဆက်လက်သင်ခွင့် လျှောက်လွှာ' ထုတ်ယူပါ။
-      2. ဖောင်ထိပ်တွင် ဓာတ်ပုံ (၁) ပုံကပ်ပြီး ကျန် (၃) ပုံကို ကလစ်ဖြင့် ညှပ်ထည့်ကာ အချက်အလက်များ ပြည့်စုံစွာဖြည့်ပါ။ (Include quick link button to view user's Pre-filled Sample).
+      2. သတ်မှတ်နေရာများတွင် လိုင်စင်ဓာတ်ပုံ (၄) ပုံလုံးကို ကော်ဖြင့် သေချာကပ်ပြီး အချက်အလက်များ ပြည့်စုံမှန်ကန်စွာ ဖြည့်သွင်းပါ။ (Include quick link button to view user's Pre-filled Sample).
       3. စာတမ်းမှတ်ဌာနစိတ် / ကျောင်းသားရေးရာတွင် ဖောင်စစ်ဆေးပြီး အတည်ပြုလက်မှတ် ယူပါ။
       4. ထိုသိပ္ပံဆောင်ထဲရှိ **ဘဏ္ဍာရေးဌာန** သို့ ဆက်သွားပြီး ငွေစာရင်းနှင့် **ဗဟိုစာကြည့်တိုက် စာအုပ်ကြွေးကျန်မရှိကြောင်း တံဆိပ်တုံးများ** ထုခိုင်းပါ။ *(Explicit Note: ဗဟိုစာကြည့်တိုက်သို့ သီးသန့်သွားရန် မလိုပါ၊ ဘဏ္ဍာရေးဌာနမှ ကိုင်တွယ်ပေးပါသည်။)*
   * **Quest 2: ULB (အပေါ်ဆုံးထပ်) - ပါမောက္ခ (ဌာနမှူး) လက်မှတ်ယူခြင်း**

@@ -14,7 +14,7 @@ Whenever editing or generating enrollment data, workflows, or UI text for the Un
 * **Library Clearance Stamp Exception:**
   * Although the stamp reads *"ရန်ကုန်တက္ကသိုလ် ဗဟိုစာကြည့်တိုက် - စာအုပ်ကြွေးကျန်မရှိပါ"*, students **DO NOT** walk to the Central Library building. This clearance and stamping is handled directly at the **Finance Department inside Science Building (သိပ္ပံဆောင်)**. Always keep this clarification visible in Quest 1.
 * **License Photo & Document Submission Rule (By Class Year):**
-  * **All Years:** Exactly **4 license photos** (`လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — ၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်`).
+  * **All Years:** Exactly **4 license photos** — all 4 photos must be glued cleanly in their designated spots (`လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — ၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်`).
   * **First Year (လူသစ်):** Must submit photocopies & original verification documents (student/parent NRC copies & 10th-grade pass certificate/marksheet/admission proof) with the new-student application form.
   * **Returning Students (`Second / Third / Fourth Year`, Default):** Submit **only** the 4 license photos with *"သဟောင်းများ ပညာဆက်လက်သင်ခွင့် လျှောက်လွှာ"*; NRC and past roll/registration details are **NOT** submitted (`ရုံးသို့ တင်ရန်မဟုတ်ပါ — ဖောင်တွင် မှန်ကန်စွာ ကြည့်ကူးဖြည့်နိုင်ရန်သာ ယူဆောင်လာရန်`).
 * **Payment Rule (Strict):**

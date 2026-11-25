@@ -22,7 +22,7 @@ When generating data, copy, or workflow logic, strictly enforce these real-world
 2. **Library Clearance Stamp Rule:**
    * Students **DO NOT** walk to the Central Library building. The *"ဗဟိုစာကြည့်တိုက် စာအုပ်ကြွေးကျန်မရှိပါ"* stamp is handled directly at the **Finance Department inside Science Building (သိပ္ပံဆောင်)**. Explicitly state this note in Quest 1.
 3. **Photo Requirement Rule:**
-   * Total **4 license photos**: 1 glued to the top of the form, 3 clipped to the form (`လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — ၁ ပုံ ဖောင်ထိပ်တွင်ကပ်ရန်၊ ကျန် ၃ ပုံ ကလစ်ဖြင့် ညှပ်ထည့်ရန်`).
+   * Total **4 license photos**: All 4 photos must be glued cleanly in their designated spots (`လိုင်စင်ဓာတ်ပုံ (၄) ပုံ — ၄ ပုံလုံး သတ်မှတ်နေရာများတွင် ကော်ဖြင့် သေချာကပ်ရပါမည် — ကော်ဘူး တစ်ပါတည်း ယူဆောင်လာရန် တိုက်တွန်းပါသည်`).
 4. **Payment Method Restriction (UAB Pay Only):**
    * Tuition fee payment MUST strictly specify **UAB Pay Only**. Do not mention KBZPay, WavePay, AYA Pay, or cash counters as valid payment options. Emphasize keeping a printed/copied receipt (ချာလံမိတ္တူ) to submit back at Science Building.
 5. **Scalable Data-Driven Structure:**

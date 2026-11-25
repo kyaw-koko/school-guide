@@ -40,7 +40,7 @@ export default function RootLayout({
       className={`${inter.variable} ${notoSansMyanmar.variable} ${sourceCodePro.variable}`}
     >
       <body className="bg-light-background text-light-on-surface antialiased">
-        <div className="min-h-screen max-w-md mx-auto bg-light-background flex flex-col">
+        <div className="min-h-screen w-full max-w-md md:max-w-3xl lg:max-w-6xl mx-auto bg-light-background flex flex-col">
           {children}
         </div>
       </body>
