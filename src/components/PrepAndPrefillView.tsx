@@ -19,6 +19,7 @@ import {
   FormTabId,
   MajorEnrollmentConfig,
 } from '@/types/enrollment';
+import { getSampleFormData } from '@/data/enrollmentData';
 import { FormLivePreview } from '@/components/FormLivePreview';
 
 interface PrepAndPrefillViewProps {
@@ -126,6 +127,8 @@ export function PrepAndPrefillView({
   const isFirstYear = selectedYear === 'First Year';
   const checklistGroupKey: ChecklistGroupKey = isFirstYear ? 'firstYear' : 'returning';
   const activeChecklist = config.checklistByGroup[checklistGroupKey];
+  const yearSampleData = getSampleFormData(config, selectedYear);
+  const firstYearOptional = config.firstYearOptionalFields ?? [];
 
   const checkedCount = activeChecklist.items.filter((doc) =>
     checkedDocs.includes(doc.id)
@@ -136,7 +139,9 @@ export function PrepAndPrefillView({
       return 0;
     }
     return config.tabRequiredFields[tabId].filter(
-      (fieldKey) => String(formData[fieldKey] ?? '').trim().length === 0
+      (fieldKey) =>
+        !(isFirstYear && firstYearOptional.includes(fieldKey)) &&
+        String(formData[fieldKey] ?? '').trim().length === 0
     ).length;
   };
 
@@ -442,9 +447,9 @@ export function PrepAndPrefillView({
               type="button"
               onClick={() =>
                 onUpdateFields({
-                  academicYear: config.sampleFormData.academicYear,
-                  uniEntryYear: config.sampleFormData.uniEntryYear,
-                  pastExamYear: config.sampleFormData.pastExamYear,
+                  academicYear: yearSampleData.academicYear,
+                  uniEntryYear: yearSampleData.uniEntryYear,
+                  ...(isFirstYear ? {} : { pastExamYear: yearSampleData.pastExamYear }),
                 })
               }
               className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-soft text-blue-ink border border-light-outline-variant font-label text-[11px] font-semibold hover:bg-blue-primary hover:text-white transition-colors cursor-pointer"
@@ -467,7 +472,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="ပညာသင်နှစ်"
                     value={formData.academicYear}
-                    placeholder={config.sampleFormData.academicYear}
+                    placeholder={yearSampleData.academicYear}
                     required
                     onChange={(v) => onUpdateField('academicYear', v)}
                   />
@@ -497,14 +502,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="သင်တန်းနှစ်"
                     value={formData.classYear}
-                    placeholder={config.sampleFormData.classYear}
+                    placeholder={yearSampleData.classYear}
                     required
                     onChange={(v) => onUpdateField('classYear', v)}
                   />
                   <FieldInput
                     label="အထူးပြုဘာသာ"
                     value={formData.major}
-                    placeholder={config.sampleFormData.major}
+                    placeholder={yearSampleData.major}
                     required
                     onChange={(v) => onUpdateField('major', v)}
                   />
@@ -513,22 +518,22 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="ခုံအမှတ်"
                     value={formData.rollNo}
-                    placeholder={config.sampleFormData.rollNo}
-                    required
+                    placeholder={yearSampleData.rollNo}
+                    required={!isFirstYear}
                     onChange={(v) => onUpdateField('rollNo', v)}
                   />
                   <FieldInput
                     label="တက္ကသိုလ်မှတ်ပုံတင်အမှတ်"
                     value={formData.uniRegNo}
-                    placeholder={config.sampleFormData.uniRegNo}
-                    required
+                    placeholder={yearSampleData.uniRegNo}
+                    required={!isFirstYear}
                     onChange={(v) => onUpdateField('uniRegNo', v)}
                   />
                 </div>
                 <FieldInput
                   label="တက္ကသိုလ်ဝင်ရောက်သည့်နှစ်"
                   value={formData.uniEntryYear}
-                  placeholder={config.sampleFormData.uniEntryYear}
+                  placeholder={yearSampleData.uniEntryYear}
                   required
                   onChange={(v) => onUpdateField('uniEntryYear', v)}
                 />
@@ -541,14 +546,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အမည် (မြန်မာစာဖြင့်)"
                     value={formData.studentNameMm}
-                    placeholder={config.sampleFormData.studentNameMm}
+                    placeholder={yearSampleData.studentNameMm}
                     required
                     onChange={(v) => onUpdateField('studentNameMm', v)}
                   />
                   <FieldInput
                     label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.studentNameEn}
-                    placeholder={config.sampleFormData.studentNameEn}
+                    placeholder={yearSampleData.studentNameEn}
                     hint="သတိပြုရန်: အမည်ရှေ့တွင် Mg သို့မဟုတ် Ma ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - Mg Aung Aung / Ma Su Su)"
                     required
                     onChange={(v) => onUpdateField('studentNameEn', v)}
@@ -558,14 +563,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="လူမျိုး"
                     value={formData.studentRace}
-                    placeholder={config.sampleFormData.studentRace}
+                    placeholder={yearSampleData.studentRace}
                     required
                     onChange={(v) => onUpdateField('studentRace', v)}
                   />
                   <FieldInput
                     label="ကိုးကွယ်သည့်ဘာသာ"
                     value={formData.studentReligion}
-                    placeholder={config.sampleFormData.studentReligion}
+                    placeholder={yearSampleData.studentReligion}
                     required
                     onChange={(v) => onUpdateField('studentReligion', v)}
                   />
@@ -574,14 +579,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="မွေးဖွားရာဇာတိ (မြို့နယ်/ပြည်နယ်/တိုင်း)"
                     value={formData.studentBirthplace}
-                    placeholder={config.sampleFormData.studentBirthplace}
+                    placeholder={yearSampleData.studentBirthplace}
                     required
                     onChange={(v) => onUpdateField('studentBirthplace', v)}
                   />
                   <FieldInput
                     label="မွေးသက္ကရာဇ်"
                     value={formData.studentDob}
-                    placeholder={config.sampleFormData.studentDob}
+                    placeholder={yearSampleData.studentDob}
                     required
                     onChange={(v) => onUpdateField('studentDob', v)}
                   />
@@ -590,14 +595,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="မှတ်ပုံတင်အမှတ်"
                     value={formData.studentNrc}
-                    placeholder={config.sampleFormData.studentNrc}
+                    placeholder={yearSampleData.studentNrc}
                     required
                     onChange={(v) => onUpdateField('studentNrc', v)}
                   />
                   <FieldInput
                     label="ဖုန်းနံပါတ်"
                     value={formData.studentPhone}
-                    placeholder={config.sampleFormData.studentPhone}
+                    placeholder={yearSampleData.studentPhone}
                     required
                     type="tel"
                     mono
@@ -606,23 +611,23 @@ export function PrepAndPrefillView({
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <FieldInput
-                    label="၁၀ တန်း ခုံအမှတ်"
+                    label="၁၂ တန်း ခုံအမှတ်"
                     value={formData.matricRollNo}
-                    placeholder={config.sampleFormData.matricRollNo}
+                    placeholder={yearSampleData.matricRollNo}
                     required
                     onChange={(v) => onUpdateField('matricRollNo', v)}
                   />
                   <FieldInput
                     label="အောင်မြင်သည့် ခုနှစ်"
                     value={formData.matricYear}
-                    placeholder={config.sampleFormData.matricYear}
+                    placeholder={yearSampleData.matricYear}
                     required
                     onChange={(v) => onUpdateField('matricYear', v)}
                   />
                   <FieldInput
                     label="စာစစ်ဌာန"
                     value={formData.matricCenter}
-                    placeholder={config.sampleFormData.matricCenter}
+                    placeholder={yearSampleData.matricCenter}
                     required
                     onChange={(v) => onUpdateField('matricCenter', v)}
                   />
@@ -630,7 +635,7 @@ export function PrepAndPrefillView({
                 <FieldInput
                   label="အမြဲတမ်းနေထိုင်သည့်လိပ်စာ (အပြည့်အစုံ)"
                   value={formData.studentPermanentAddress}
-                  placeholder={config.sampleFormData.studentPermanentAddress}
+                  placeholder={yearSampleData.studentPermanentAddress}
                   required
                   onChange={(v) => onUpdateField('studentPermanentAddress', v)}
                 />
@@ -654,15 +659,16 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အဘအမည် (မြန်မာစာဖြင့်)"
                     value={formData.fatherNameMm}
-                    placeholder={config.sampleFormData.fatherNameMm}
+                    placeholder={yearSampleData.fatherNameMm}
                     required
                     onChange={(v) => onUpdateField('fatherNameMm', v)}
                   />
                   <FieldInput
                     label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.fatherNameEn}
-                    placeholder={config.sampleFormData.fatherNameEn}
+                    placeholder={yearSampleData.fatherNameEn}
                     hint="သတိပြုရန်: အမည်ရှေ့တွင် U ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - U Ba)"
+                    required
                     onChange={(v) => onUpdateField('fatherNameEn', v)}
                   />
                 </div>
@@ -670,14 +676,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အဘ လူမျိုး"
                     value={formData.fatherRace}
-                    placeholder={config.sampleFormData.fatherRace}
+                    placeholder={yearSampleData.fatherRace}
                     required
                     onChange={(v) => onUpdateField('fatherRace', v)}
                   />
                   <FieldInput
                     label="အဘ ကိုးကွယ်သည့်ဘာသာ"
                     value={formData.fatherReligion}
-                    placeholder={config.sampleFormData.fatherReligion}
+                    placeholder={yearSampleData.fatherReligion}
                     required
                     onChange={(v) => onUpdateField('fatherReligion', v)}
                   />
@@ -686,13 +692,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="မွေးဖွားရာဇာတိ (မြို့နယ်/ပြည်နယ်/တိုင်း)"
                     value={formData.fatherBirthplace}
-                    placeholder={config.sampleFormData.fatherBirthplace}
+                    placeholder={yearSampleData.fatherBirthplace}
+                    required
                     onChange={(v) => onUpdateField('fatherBirthplace', v)}
                   />
                   <FieldInput
                     label="အဘ မှတ်ပုံတင်အမှတ်"
                     value={formData.fatherNrc}
-                    placeholder={config.sampleFormData.fatherNrc}
+                    placeholder={yearSampleData.fatherNrc}
                     required
                     onChange={(v) => onUpdateField('fatherNrc', v)}
                   />
@@ -704,7 +711,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အလုပ်အကိုင် / ရာထူး / ဌာန"
                     value={formData.fatherOccupation}
-                    placeholder={config.sampleFormData.fatherOccupation}
+                    placeholder={yearSampleData.fatherOccupation}
                     required
                     onChange={(v) => onUpdateField('fatherOccupation', v)}
                   />
@@ -724,7 +731,7 @@ export function PrepAndPrefillView({
                     <input
                       type="text"
                       value={formData.fatherAddress}
-                      placeholder={config.sampleFormData.fatherAddress}
+                      placeholder={yearSampleData.fatherAddress}
                       onChange={(e) => onUpdateField('fatherAddress', e.target.value)}
                       className={`w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface focus:outline-none focus:ring-1 transition-colors ${
                         formData.fatherAddress.trim().length === 0
@@ -736,7 +743,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အဘ ဖုန်းနံပါတ်"
                     value={formData.fatherPhone}
-                    placeholder={config.sampleFormData.fatherPhone}
+                    placeholder={yearSampleData.fatherPhone}
                     type="tel"
                     mono
                     onChange={(v) => onUpdateField('fatherPhone', v)}
@@ -762,15 +769,16 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အမိအမည် (မြန်မာစာဖြင့်)"
                     value={formData.motherNameMm}
-                    placeholder={config.sampleFormData.motherNameMm}
+                    placeholder={yearSampleData.motherNameMm}
                     required
                     onChange={(v) => onUpdateField('motherNameMm', v)}
                   />
                   <FieldInput
                     label="အမည် (အင်္ဂလိပ်စာဖြင့် ဖြည့်ရန်)"
                     value={formData.motherNameEn}
-                    placeholder={config.sampleFormData.motherNameEn}
+                    placeholder={yearSampleData.motherNameEn}
                     hint="သတိပြုရန်: အမည်ရှေ့တွင် Daw ထည့်ရေးရန် မမေ့ပါနှင့် (ဥပမာ - Daw Mya)"
+                    required
                     onChange={(v) => onUpdateField('motherNameEn', v)}
                   />
                 </div>
@@ -778,14 +786,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အမိ လူမျိုး"
                     value={formData.motherRace}
-                    placeholder={config.sampleFormData.motherRace}
+                    placeholder={yearSampleData.motherRace}
                     required
                     onChange={(v) => onUpdateField('motherRace', v)}
                   />
                   <FieldInput
                     label="အမိ ကိုးကွယ်သည့်ဘာသာ"
                     value={formData.motherReligion}
-                    placeholder={config.sampleFormData.motherReligion}
+                    placeholder={yearSampleData.motherReligion}
                     required
                     onChange={(v) => onUpdateField('motherReligion', v)}
                   />
@@ -794,13 +802,14 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="မွေးဖွားရာဇာတိ (မြို့နယ်/ပြည်နယ်/တိုင်း)"
                     value={formData.motherBirthplace}
-                    placeholder={config.sampleFormData.motherBirthplace}
+                    placeholder={yearSampleData.motherBirthplace}
+                    required
                     onChange={(v) => onUpdateField('motherBirthplace', v)}
                   />
                   <FieldInput
                     label="အမိ မှတ်ပုံတင်အမှတ်"
                     value={formData.motherNrc}
-                    placeholder={config.sampleFormData.motherNrc}
+                    placeholder={yearSampleData.motherNrc}
                     required
                     onChange={(v) => onUpdateField('motherNrc', v)}
                   />
@@ -812,7 +821,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အလုပ်အကိုင် / ရာထူး / ဌာန"
                     value={formData.motherOccupation}
-                    placeholder={config.sampleFormData.motherOccupation}
+                    placeholder={yearSampleData.motherOccupation}
                     required
                     onChange={(v) => onUpdateField('motherOccupation', v)}
                   />
@@ -832,7 +841,7 @@ export function PrepAndPrefillView({
                     <input
                       type="text"
                       value={formData.motherAddress}
-                      placeholder={config.sampleFormData.motherAddress}
+                      placeholder={yearSampleData.motherAddress}
                       onChange={(e) => onUpdateField('motherAddress', e.target.value)}
                       className={`w-full rounded-lg px-3 py-2 text-sm leading-relaxed font-body text-light-on-surface focus:outline-none focus:ring-1 transition-colors ${
                         formData.motherAddress.trim().length === 0
@@ -844,7 +853,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အမိ ဖုန်းနံပါတ်"
                     value={formData.motherPhone}
-                    placeholder={config.sampleFormData.motherPhone}
+                    placeholder={yearSampleData.motherPhone}
                     type="tel"
                     mono
                     onChange={(v) => onUpdateField('motherPhone', v)}
@@ -868,7 +877,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="ပထမနှစ် အဓိကဘာသာ"
                     value={formData.pastExamMajor}
-                    placeholder={config.sampleFormData.pastExamMajor}
+                    placeholder={yearSampleData.pastExamMajor}
                     required
                     onChange={(v) => onUpdateField('pastExamMajor', v)}
                   />
@@ -876,14 +885,14 @@ export function PrepAndPrefillView({
                     <FieldInput
                       label="ခုံအမှတ်"
                       value={formData.pastExamRollNo}
-                      placeholder={config.sampleFormData.pastExamRollNo}
+                      placeholder={yearSampleData.pastExamRollNo}
                       required
                       onChange={(v) => onUpdateField('pastExamRollNo', v)}
                     />
                     <FieldInput
                       label="ခုနှစ်"
                       value={formData.pastExamYear}
-                      placeholder={config.sampleFormData.pastExamYear}
+                      placeholder={yearSampleData.pastExamYear}
                       required
                       onChange={(v) => onUpdateField('pastExamYear', v)}
                     />
@@ -891,7 +900,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="အောင် / ရှုံး"
                     value={formData.pastExamResult}
-                    placeholder={config.sampleFormData.pastExamResult}
+                    placeholder={yearSampleData.pastExamResult}
                     required
                     onChange={(v) => onUpdateField('pastExamResult', v)}
                   />
@@ -921,7 +930,7 @@ export function PrepAndPrefillView({
                 <FieldInput
                   label="(က) ထောက်ပံ့မည့်ပုဂ္ဂိုလ် အမည်"
                   value={formData.sponsorName}
-                  placeholder={config.sampleFormData.sponsorName}
+                  placeholder={yearSampleData.sponsorName}
                   required
                   onChange={(v) => onUpdateField('sponsorName', v)}
                 />
@@ -929,7 +938,7 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="(ခ) မည်သို့တော်စပ်သည်"
                     value={formData.sponsorRelation}
-                    placeholder={config.sampleFormData.sponsorRelation}
+                    placeholder={yearSampleData.sponsorRelation}
                     required
                     onChange={(v) => onUpdateField('sponsorRelation', v)}
                   />
@@ -958,13 +967,13 @@ export function PrepAndPrefillView({
                 <FieldInput
                   label="(ဂ) အလုပ်အကိုင်"
                   value={formData.sponsorOccupation}
-                  placeholder={config.sampleFormData.sponsorOccupation}
+                  placeholder={yearSampleData.sponsorOccupation}
                   onChange={(v) => onUpdateField('sponsorOccupation', v)}
                 />
                 <FieldInput
                   label="(ဃ) ဆက်သွယ်ရန်လိပ်စာ"
                   value={formData.sponsorAddress}
-                  placeholder={config.sampleFormData.sponsorAddress}
+                  placeholder={yearSampleData.sponsorAddress}
                   required
                   onChange={(v) => onUpdateField('sponsorAddress', v)}
                 />
@@ -973,19 +982,19 @@ export function PrepAndPrefillView({
                   <FieldInput
                     label="နေ့စွဲ (ခုနှစ်)"
                     value={formData.declarationYear}
-                    placeholder={config.sampleFormData.declarationYear}
+                    placeholder={yearSampleData.declarationYear}
                     onChange={(v) => onUpdateField('declarationYear', v)}
                   />
                   <FieldInput
                     label="လ"
                     value={formData.declarationMonth}
-                    placeholder={config.sampleFormData.declarationMonth}
+                    placeholder={yearSampleData.declarationMonth}
                     onChange={(v) => onUpdateField('declarationMonth', v)}
                   />
                   <FieldInput
                     label="ရက်"
                     value={formData.declarationDay}
-                    placeholder={config.sampleFormData.declarationDay}
+                    placeholder={yearSampleData.declarationDay}
                     onChange={(v) => onUpdateField('declarationDay', v)}
                   />
                 </div>
@@ -1009,7 +1018,7 @@ export function PrepAndPrefillView({
                   <input
                     type="text"
                     value={formData.currentContactAddress}
-                    placeholder={config.sampleFormData.currentContactAddress}
+                    placeholder={yearSampleData.currentContactAddress}
                     onChange={(e) =>
                       onUpdateField('currentContactAddress', e.target.value)
                     }
@@ -1040,7 +1049,7 @@ export function PrepAndPrefillView({
         <div className="lg:col-span-6 lg:sticky lg:top-20 min-w-0">
           <FormLivePreview
             formData={formData}
-            sampleData={config.sampleFormData}
+            sampleData={yearSampleData}
             copy={config.formPreviewCopy}
             remainingCount={totalRemainingCount}
             isFirstYear={isFirstYear}

@@ -333,8 +333,10 @@ export interface MajorEnrollmentConfig {
   checklistByGroup: Record<ChecklistGroupKey, ChecklistGroupConfig>;
   formTabs: FormTabConfig[];
   tabRequiredFields: Record<FormTabId, (keyof EnrollmentFormData)[]>;
+  firstYearOptionalFields?: (keyof EnrollmentFormData)[];
   defaultFormData: EnrollmentFormData;
   sampleFormData: EnrollmentFormData;
+  sampleFormDataByYear?: Partial<Record<AcademicYearOption, Partial<EnrollmentFormData>>>;
   formPreviewCopy: FormPreviewCopy;
   gates: Record<EntryGateId, EntryGateConfig>;
   campusRoutes: CampusRouteConfig[];

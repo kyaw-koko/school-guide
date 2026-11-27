@@ -23,12 +23,17 @@ interface FormLivePreviewProps {
 function PreviewValue({
   value,
   emptyLabel,
+  required = true,
 }: {
   value: string;
   emptyLabel: string;
+  required?: boolean;
 }) {
   const trimmed = value.trim();
   if (!trimmed) {
+    if (!required) {
+      return <span className="text-light-on-surface-variant">—</span>;
+    }
     return (
       <span className="inline-block px-1 py-0.5 rounded bg-red-50 border border-red-200 text-light-error font-semibold">
         {emptyLabel}
@@ -264,7 +269,11 @@ export function FormLivePreview({
                         {copy.rollNoLabel}
                       </td>
                       <td className="border border-paper-border px-1.5 py-1">
-                        <PreviewValue value={activeData.rollNo} emptyLabel={copy.emptyPlaceholder} />
+                        <PreviewValue
+                          value={activeData.rollNo}
+                          emptyLabel={copy.emptyPlaceholder}
+                          required={!isFirstYear}
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -272,7 +281,11 @@ export function FormLivePreview({
                         {copy.regNoLabel}
                       </td>
                       <td className="border border-paper-border px-1.5 py-1">
-                        <PreviewValue value={activeData.uniRegNo} emptyLabel={copy.emptyPlaceholder} />
+                        <PreviewValue
+                          value={activeData.uniRegNo}
+                          emptyLabel={copy.emptyPlaceholder}
+                          required={!isFirstYear}
+                        />
                       </td>
                     </tr>
                     <tr>
@@ -334,18 +347,10 @@ export function FormLivePreview({
                         <PreviewValue value={activeData.studentNameEn} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                       <td className="border border-paper-border p-1.5 font-body">
-                        {activeData.fatherNameEn.trim() ? (
-                          <span className="text-blue-700 font-semibold">{activeData.fatherNameEn.trim()}</span>
-                        ) : (
-                          <span className="text-light-on-surface-variant">—</span>
-                        )}
+                        <PreviewValue value={activeData.fatherNameEn} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                       <td className="border border-paper-border p-1.5 font-body">
-                        {activeData.motherNameEn.trim() ? (
-                          <span className="text-blue-700 font-semibold">{activeData.motherNameEn.trim()}</span>
-                        ) : (
-                          <span className="text-light-on-surface-variant">—</span>
-                        )}
+                        <PreviewValue value={activeData.motherNameEn} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                     </tr>
                     <tr>
@@ -384,18 +389,10 @@ export function FormLivePreview({
                         <PreviewValue value={activeData.studentBirthplace} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                       <td className="border border-paper-border p-1.5 font-body">
-                        {activeData.fatherBirthplace.trim() ? (
-                          <span className="text-blue-700 font-semibold">{activeData.fatherBirthplace.trim()}</span>
-                        ) : (
-                          <span className="text-light-on-surface-variant">—</span>
-                        )}
+                        <PreviewValue value={activeData.fatherBirthplace} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                       <td className="border border-paper-border p-1.5 font-body">
-                        {activeData.motherBirthplace.trim() ? (
-                          <span className="text-blue-700 font-semibold">{activeData.motherBirthplace.trim()}</span>
-                        ) : (
-                          <span className="text-light-on-surface-variant">—</span>
-                        )}
+                        <PreviewValue value={activeData.motherBirthplace} emptyLabel={copy.emptyPlaceholder} />
                       </td>
                     </tr>
                     <tr>
@@ -567,11 +564,7 @@ export function FormLivePreview({
               </p>
               <p className="text-light-on-surface-variant py-0.5">
                 {copy.sponsorLabels.occupation}:{' '}
-                {activeData.sponsorOccupation.trim() ? (
-                  <span className="text-blue-700 font-semibold">{activeData.sponsorOccupation.trim()}</span>
-                ) : (
-                  <span className="text-light-on-surface-variant">—</span>
-                )}
+                <PreviewValue value={activeData.sponsorOccupation} emptyLabel={copy.emptyPlaceholder} />
               </p>
               <p className="text-light-on-surface-variant py-0.5">
                 {copy.sponsorLabels.address}:{' '}

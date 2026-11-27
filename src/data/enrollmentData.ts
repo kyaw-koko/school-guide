@@ -1,5 +1,7 @@
 import {
+  AcademicYearOption,
   DisclaimerConfig,
+  EnrollmentFormData,
   MajorEnrollmentConfig,
   MajorId,
 } from '@/types/enrollment';
@@ -119,7 +121,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
         toggleLabel: 'First Year (လူသစ်)',
         bannerTitle: 'ပထမနှစ် (လူသစ်) — မူရင်းနှင့် မိတ္တူ စာရွက်စာတမ်းများ ပူးတွဲတင်ပြရန် လိုအပ်သည်',
         bannerText:
-          'ကျောင်းဝင်ခွင့်အသစ် လျှောက်ထားရမည်ဖြစ်သောကြောင့် မှတ်ပုံတင်မိတ္တူနှင့် ၁၀ တန်းအောင်လက်မှတ်/အမှတ်စာရင်း မူရင်း/မိတ္တူများကို ဖောင်နှင့်အတူ တင်ပြစစ်ဆေးရပါမည်။',
+          'ကျောင်းဝင်ခွင့်အသစ် လျှောက်ထားရမည်ဖြစ်သောကြောင့် မှတ်ပုံတင်မိတ္တူနှင့် ၁၂ တန်းအောင်လက်မှတ်/အမှတ်စာရင်း မူရင်း/မိတ္တူများကို ဖောင်နှင့်အတူ တင်ပြစစ်ဆေးရပါမည်။',
         items: [
           {
             id: 'doc-photos',
@@ -136,7 +138,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
           },
           {
             id: 'doc-matric',
-            title: '၁၀ တန်း အောင်လက်မှတ် / အမှတ်စာရင်း မူရင်းနှင့် မိတ္တူ နှင့် ဝင်ခွင့်အထောက်အထား',
+            title: '၁၂ တန်း အောင်လက်မှတ် / အမှတ်စာရင်း မူရင်းနှင့် မိတ္တူ နှင့် ဝင်ခွင့်အထောက်အထား',
             description: 'ပူးတွဲတင်ပြရန် လိုအပ်သည်',
             badge: 'ပူးတွဲတင်ပြရန်',
           },
@@ -169,7 +171,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
           },
           {
             id: 'doc-past-info',
-            title: 'ယခင်နှစ် ခုံအမှတ်၊ တက္ကသိုလ်မှတ်ပုံတင်အမှတ် နှင့် ၁၀ တန်းအောင် အချက်အလက်',
+            title: 'ယခင်နှစ် ခုံအမှတ်၊ တက္ကသိုလ်မှတ်ပုံတင်အမှတ် နှင့် ၁၂ တန်းအောင် အချက်အလက်',
             description: 'ရုံးသို့ တင်ရန်မဟုတ်ပါ — ဖောင်တွင် မှန်ကန်စွာ ကြည့်ကူးဖြည့်နိုင်ရန်သာ ယူဆောင်လာရန်',
             badge: 'ကြည့်ကူးရန်သာ',
           },
@@ -208,16 +210,20 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
       ],
       father: [
         'fatherNameMm',
+        'fatherNameEn',
         'fatherRace',
         'fatherReligion',
+        'fatherBirthplace',
         'fatherNrc',
         'fatherOccupation',
         'fatherAddress',
       ],
       mother: [
         'motherNameMm',
+        'motherNameEn',
         'motherRace',
         'motherReligion',
+        'motherBirthplace',
         'motherNrc',
         'motherOccupation',
         'motherAddress',
@@ -225,6 +231,7 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
       exam: ['pastExamMajor', 'pastExamRollNo', 'pastExamYear', 'pastExamResult'],
       sponsor: ['sponsorName', 'sponsorRelation', 'sponsorAddress', 'currentContactAddress'],
     },
+    firstYearOptionalFields: ['rollNo', 'uniRegNo'],
     defaultFormData: {
       academicYear: '',
       programLevel: 'ဘွဲ့ကြို',
@@ -343,6 +350,52 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
       declarationDay: '၂၅',
       currentContactAddress:
         'အမှတ် (၁၂)၊ တက္ကသိုလ်ရိပ်သာလမ်း၊ ကမာရွတ်မြို့နယ်၊ ရန်ကုန်မြို့',
+    },
+    sampleFormDataByYear: {
+      'First Year': {
+        classYear: 'ပထမနှစ်',
+        rollNo: '',
+        uniRegNo: '',
+        uniEntryYear: '၂၀၂၆ - ၂၀၂၇',
+        matricYear: '၂၀၂၆',
+        pastExamMajor: '',
+        pastExamRollNo: '',
+        pastExamYear: '',
+        pastExamResult: '',
+      },
+      'Second Year': {
+        classYear: 'ဒုတိယနှစ်',
+        rollNo: 'ပကသ - ၁၀၁',
+        uniRegNo: 'ရတ - ၀၀၀၀၀',
+        uniEntryYear: '၂၀၂၅ - ၂၀၂၆',
+        matricYear: '၂၀၂၅',
+        pastExamMajor: 'ကွန်ပျူတာသိပ္ပံ',
+        pastExamRollNo: 'ပကသ - ၁၀၁',
+        pastExamYear: '၂၀၂၅ - ၂၀၂၆',
+        pastExamResult: 'အောင်',
+      },
+      'Third Year': {
+        classYear: 'တတိယနှစ်',
+        rollNo: 'တကသ - ၁၀၁',
+        uniRegNo: 'ရတ - ၀၀၀၀၀',
+        uniEntryYear: '၂၀၂၄ - ၂၀၂၅',
+        matricYear: '၂၀၂၄',
+        pastExamMajor: 'ကွန်ပျူတာသိပ္ပံ',
+        pastExamRollNo: 'ဒကသ - ၁၀၁',
+        pastExamYear: '၂၀၂၅ - ၂၀၂၆',
+        pastExamResult: 'အောင်',
+      },
+      'Fourth Year': {
+        classYear: 'စတုတ္ထနှစ်',
+        rollNo: 'စကသ - ၁၀၁',
+        uniRegNo: 'ရတ - ၀၀၀၀၀',
+        uniEntryYear: '၂၀၂၃ - ၂၀၂၄',
+        matricYear: '၂၀၂၃',
+        pastExamMajor: 'ကွန်ပျူတာသိပ္ပံ',
+        pastExamRollNo: 'တကသ - ၁၀၁',
+        pastExamYear: '၂၀၂၅ - ၂၀၂၆',
+        pastExamResult: 'အောင်',
+      },
     },
     formPreviewCopy: {
       sectionTitle: 'ဖောင်နမူနာ (Official Form Replica)',
@@ -650,3 +703,13 @@ export const ENROLLMENT_DATA: Record<MajorId, MajorEnrollmentConfig> = {
     },
   },
 };
+
+export function getSampleFormData(
+  config: MajorEnrollmentConfig,
+  selectedYear: AcademicYearOption
+): EnrollmentFormData {
+  return {
+    ...config.sampleFormData,
+    ...(config.sampleFormDataByYear?.[selectedYear] ?? {}),
+  };
+}
